@@ -1,0 +1,30 @@
+[
+  {
+    "title": "Listing title number one",
+    "description": "Description text number one",
+    "user_id": 3,
+    "status_id": 1,
+    "category_id":2
+  },
+    {
+    "title": "Listing title number two",
+    "description": "Description text number two",
+    "user_id": 1,
+    "status_id": 2,
+    "category_id":3
+  },
+  {
+    "title": "Listing title number three",
+    "description": "Description text number three",
+    "user_id": 2,
+    "status_id": 3,
+    "category_id":1
+  },
+  {
+    "title": "Listing title number four",
+    "description": "Description text number four",
+    "user_id": 3,
+    "status_id": 2,
+    "category_id":2
+  }
+]
