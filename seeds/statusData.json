@@ -1,0 +1,11 @@
+[
+  {
+    "type": "Active"
+  },
+    {
+    "type": "Pending"
+  },
+  {
+    "type": "Accepted"
+  }
+]

@@ -35,6 +35,18 @@ User.init(
         len: [8],
       },
     },
+    num_haggles: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    },
+    total_rating: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    },
+    avg_rating: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    },
   },
   {
     hooks: {
