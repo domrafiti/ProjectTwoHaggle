@@ -1,14 +1,17 @@
 const newFormHandler = async (event) => {
   event.preventDefault();
 
-  const name = document.querySelector('#project-name').value.trim();
-  const needed_funding = document.querySelector('#project-funding').value.trim();
-  const description = document.querySelector('#project-desc').value.trim();
-
-  if (name && needed_funding && description) {
-    const response = await fetch(`/api/projects`, {
+  const title = document.querySelector('#listing-name').value.trim();
+  // const lookingFor = document.querySelector('#looking-for').value.trim();
+  const description = document.querySelector('#listing-desc').value.trim();
+  const category = document.querySelector('#listing-category').value.trim();
+  console.log('am i here?');
+  if (title && description && category) {
+    //need updated route
+    console.log('or here?');
+    const response = await fetch(`/api/listings`, {
       method: 'POST',
-      body: JSON.stringify({ name, needed_funding, description }),
+      body: JSON.stringify({ title, description, category }),
       headers: {
         'Content-Type': 'application/json',
       },
@@ -22,10 +25,14 @@ const newFormHandler = async (event) => {
   }
 };
 
+//update needed
+
+//feedback
+
 const delButtonHandler = async (event) => {
   if (event.target.hasAttribute('data-id')) {
     const id = event.target.getAttribute('data-id');
-
+    //need updated route
     const response = await fetch(`/api/projects/${id}`, {
       method: 'DELETE',
     });

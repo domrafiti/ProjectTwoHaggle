@@ -1,48 +1,102 @@
 const router = require('express').Router();
-const { Project, User } = require('../models');
+const { Listing, User, Category, Status } = require('../models');
 const withAuth = require('../utils/auth');
 
+// Homepage route
 router.get('/', async (req, res) => {
   try {
-    // Get all projects and JOIN with user data
-    const projectData = await Project.findAll({
+    const listingData = await Listing.findAll({
       include: [
         {
           model: User,
           attributes: ['name'],
         },
+        {
+          model: Category,
+          attributes: ['name'],
+        },
+        {
+          model: Status,
+          attributes: ['type'],
+        },
       ],
     });
 
     // Serialize data so the template can read it
-    const projects = projectData.map((project) => project.get({ plain: true }));
+    const listings = listingData.map((listing) => listing.get({ plain: true }));
 
     // Pass serialized data and session flag into template
-    res.render('homepage', { 
-      projects, 
-      logged_in: req.session.logged_in 
+    res.render('homepage', {
+      listings,
+      logged_in: req.session.logged_in,
     });
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-router.get('/project/:id', async (req, res) => {
+//Individiual Listing Route
+router.get('/listing/:id', async (req, res) => {
   try {
-    const projectData = await Project.findByPk(req.params.id, {
+    const listingData = await Listing.findByPk(req.params.id, {
       include: [
         {
           model: User,
+          attributes: ['name', 'id'],
+        },
+        {
+          model: Category,
           attributes: ['name'],
+        },
+        {
+          model: Status,
+          attributes: ['type'],
         },
       ],
     });
 
-    const project = projectData.get({ plain: true });
+    const listing = listingData.get({ plain: true });
 
-    res.render('project', {
-      ...project,
-      logged_in: req.session.logged_in
+    res.render('listing', {
+      ...listing,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+//User Listing Route
+router.get('/listings', async (req, res) => {
+  try {
+    const userData = await User.findByPk(req.session.user_id, {
+      include: [
+        {
+          model: Listing,
+          attributes: [
+            'title',
+            'description',
+            'category_id',
+            'status_id',
+            'date_created',
+          ],
+        },
+        // {
+        //   model: Category,
+        //   attributes: ['name'],
+        // },
+        // {
+        //   model: Status,
+        //   attributes: ['type'],
+        // },
+      ],
+    });
+
+    const user = userData.get({ plain: true });
+
+    res.render('listings', {
+      ...user,
+      logged_in: req.session.logged_in,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -55,14 +109,14 @@ router.get('/profile', withAuth, async (req, res) => {
     // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
-      include: [{ model: Project }],
+      include: [{ model: Listing }],
     });
 
     const user = userData.get({ plain: true });
 
     res.render('profile', {
       ...user,
-      logged_in: true
+      logged_in: true,
     });
   } catch (err) {
     res.status(500).json(err);

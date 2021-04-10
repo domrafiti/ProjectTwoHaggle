@@ -1,24 +1,63 @@
+{{!--
 <!-- Loop over each object in the projects array -->
-{{#each projects as |project| }}
+{{#each listings as |listing| }}
 <div class="row mb-4 project">
   <div class="col-md-5">
     <h2>
       <!-- Call helper function with triple brackets to render the emoji span as HTML -->
       {{{get_emoji}}}
-      <a href="/project/{{project.id}}">{{project.name}}</a>
+      <a href="/project/{{listing.id}}">{{listing.name}}</a>
     </h2>
-    <p>
-      <span for="img" aria-label="money">💲</span>
-      <!-- Pass needed_funding value to the helper function -->
-      <span class="dollar-amount">{{format_amount project.needed_funding}}</span>
-      needed!
-    </p>
-    <p>Created by {{project.user.name}} on {{format_date project.date_created}}</p>
+    <p>Created by: {{listing.user.name}} on {{format_date listing.date_created}}</p>
   </div>
   <div class="col-md-7">
+    <p>Looking for: {{listing.looking_for}}</p>
+
+    <!--need to limit to 140(?) characters -->
+
     <p>
-      {{project.description}}
+      {{listing.description}}
     </p>
+  </div>
+</div>
+{{/each}} --}}
+
+{{#each listings as |listing| }}
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+      aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <!--NEED IMAGES-->
+      <img src="..." class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>{{listing.name}}</h5>
+        <p>{{listing.description}}</p>
+        <p>{{listing.looking_for}}</p>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+
+      {{listing.title}}
+    </h2>
+    <p>Seller: {{user.name}}</p>
+    <p>Category: {{category.name}}</p>
+    <p>Status: {{status.type}}</p>
+
   </div>
 </div>
 {{/each}}
