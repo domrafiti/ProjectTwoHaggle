@@ -1,20 +1,3 @@
-{{!-- <div class="text-center">
-  <h2>{{name}}</h2>
-  <p>{{{get_emoji}}}</p>
-  <p>{{description}}</p>
-  <p>Created by {{user.name}} on {{format_date date_created}}</p>
-  <p>
-    <span for="img" aria-label="money">💲</span>
-    <span class="dollar-amount">{{format_amount needed_funding}}</span>
-    needed
-  </p>
-  <p>
-    <button class="btn btn-primary">I'm Intrested!</button>
-  </p>
-</div> --}}
-
-
-
 <!--FILTERING NEEDED-->
 
 {{#each listings as |listing| }}
@@ -26,9 +9,9 @@
     </div>
     <div class="col-md-8">
       <div class="card-body">
-        <h5 class="card-title">{{name}}</h5>
+        <h5 class="card-title">{{title}}</h5>
         <p class="card-text">{{description}}</p>
-        <p class="card-text">{{looking_for}}</p>
+        {{!-- <p class="card-text">{{looking_for}}</p> --}}
         <p class="card-text"><small class="text-muted">Created by {{user.name}} on {{format_date date_created}}</small>
         </p>
         <!--button is allowing us to redirect user to individual listing-->

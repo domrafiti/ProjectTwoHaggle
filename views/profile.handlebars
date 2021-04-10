@@ -15,10 +15,10 @@
         <label for="listing-name">Listing Name:</label>
         <input class="form-input" type="text" id="listing-name" name="listing-name" />
       </div>
-      <div class="form-group">
+      {{!-- <div class="form-group">
         <label for="looking-for">Looking For in Return:</label>
         <input class="form-input" type="number" id="looking-for" name="looking-for" />
-      </div>
+      </div> --}}
       <div class="form-group">
         <label for="listing-desc">Listing Description:</label>
         <textarea class="form-input" id="listing-desc" name="listing-desc"></textarea>
@@ -34,17 +34,17 @@
   </div>
 
   <!--REUSE THIS FOR DISPLAYING LISTINGS ON LISTING ROUTE-->
-  {{#if my_listings.length}}
+  {{#if listings.length}}
   <div class="col-md-6 project-list">
     <!--need to include filtered get to show only users active listings-->
     <h3><a href="/listings">View my current listings</a></h3>
 
 
-    {{#each my_listings as |listing|}}
+    {{#each listings as |listing|}}
     <div class="row mb-2">
       <div class="col-md-8">
         <!--need to have images included-->
-        <h4><a href="/project/{{listing.id}}">{{listing.name}}</a></h4>
+        <h4><a href="/listing/{{listing.id}}">{{listing.title}}</a></h4>
       </div>
       <div class="col-md-4">
         <!--NEED TO INCLUDE LOGIC TO REMOVE DELETE BUTTON IF SESSION USER = POSTING USER-->
