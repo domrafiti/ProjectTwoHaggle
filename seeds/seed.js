@@ -6,9 +6,12 @@ const listingData = require('./listingData.json');
 const categoryData = require('./categoryData.json');
 const statusData = require('./statusData.json');
 
-
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
+
+  await Category.bulkCreate(categoryData);
+
+  await Status.bulkCreate(statusData);
 
   const users = await User.bulkCreate(userData, {
     individualHooks: true,
@@ -21,10 +24,6 @@ const seedDatabase = async () => {
       user_id: users[Math.floor(Math.random() * users.length)].id,
     });
   }
-
-  await Category.bulkCreate(categoryData);
-
-  await Status.bulkCreate(statusData);
 
   process.exit(0);
 };
