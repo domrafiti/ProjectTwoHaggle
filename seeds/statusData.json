@@ -1,11 +1,11 @@
 [
   {
-    "name": "Active"
+    "type": "Active"
   },
     {
-    "name": "Pending"
+    "type": "Pending"
   },
   {
-    "name": "Accepted"
+    "type": "Accepted"
   }
 ]
