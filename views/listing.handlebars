@@ -1,0 +1,50 @@
+{{!-- <div class="text-center">
+  <h2>{{name}}</h2>
+  <p>{{{get_emoji}}}</p>
+  <p>{{description}}</p>
+  <p>{{looking_for}}</p>
+  <p>Created by: {{user.name}} on {{format_date date_created}}</p>
+  <p>
+    <button class="btn btn-primary">I am Interested!</button>
+  </p>
+</div> --}}
+
+
+<!--Need to look into allowing post owner to unlock and edit this page-->
+
+{{!-- {{#if user.name}} --}}
+<div class="card mb-3" style="max-width: 540px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <!--how do we store and upload images?-->
+      <img src="..." alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h2 class="card-title">{{name}}</h2>
+        <p class="card-text">{{description}}</p>
+        <p class="card-text"></p>{{looking_for}}</p>
+        <p class="card-text"><small class="text-muted">Created by: {{user.name}} on {{format_date date_created}}</small>
+        </p>
+        {{#if logged_in}}
+        <p>
+          <button class="btn btn-primary">I am Interested!</button>
+        </p>
+        {{else}}
+        <a href="/login">Login</a>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</div>
+
+{{!-- 4. Listing/One -- MVP Ready
+A. include listing information (photos, details, looking for, description, etc.)
+B. Check login status:
+YES
+a. i'm interested - contact to trade
+i. workflow
+NO
+a. Prompt to login - redirect
+C. OWNER:
+a. unlock page to edit --}}
