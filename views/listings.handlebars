@@ -1,0 +1,57 @@
+{{!-- <div class="text-center">
+  <h2>{{name}}</h2>
+  <p>{{{get_emoji}}}</p>
+  <p>{{description}}</p>
+  <p>Created by {{user.name}} on {{format_date date_created}}</p>
+  <p>
+    <span for="img" aria-label="money">💲</span>
+    <span class="dollar-amount">{{format_amount needed_funding}}</span>
+    needed
+  </p>
+  <p>
+    <button class="btn btn-primary">I'm Intrested!</button>
+  </p>
+</div> --}}
+
+
+
+<!--FILTERING NEEDED-->
+
+{{#each listings as |listing| }}
+<div class="card mb-3" style="max-width: 540px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <!--need image here -->
+      <img src="..." alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{name}}</h5>
+        <p class="card-text">{{description}}</p>
+        <p class="card-text">{{looking_for}}</p>
+        <p class="card-text"><small class="text-muted">Created by {{user.name}} on {{format_date date_created}}</small>
+        </p>
+        <!--button is allowing us to redirect user to individual listing-->
+        <button id="listing-view" type="submit" class="btn btn-primary"><a href="/project/{{listing.id}}">View
+            Listing</a></button>
+      </div>
+    </div>
+  </div>
+</div>
+{{/each}}
+
+{{!-- 3. Listings/Browsing - login status doesnt matter
+A. Continuous Scroll/Pages
+B. Present Listings
+a. using cards of sorts to display (routes to listing)
+i. Item/Service Title
+ii. Short descriptoin
+iii. looking for
+iv. picture (use position 0 and let poster know first image is listing image)
+C. Filters?
+a. categories
+b. services OR items
+c. one user
+D. Sort
+E. Top Traders - activity within last 30 days or based off rating
+F. New/Most Recently posted --}}
