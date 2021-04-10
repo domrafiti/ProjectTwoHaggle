@@ -12,16 +12,20 @@ Listing.belongsTo(User, {
   foreignKey: 'user_id',
 });
 
-// Listing.hasOne(Status, {
-//   foreignKey: 'listing_id'
-// });
+Status.hasMany(Listing, {
+  foreignKey: 'status_id'
+});
 
-// Listing.hasMany(Category, {
-//   foreignKey: 'listing_id'
-// });
+Listing.belongsTo(Status, {
+  foreignKey: 'status_id',
+});
 
-// Category.hasMany(Listing, {
-// foreignKey: 'category_id'
-// });
+Category.hasMany(Listing, {
+foreignKey: 'category_id'
+});
+
+Listing.belongsTo(Category, {
+  foreignKey: 'category_id',
+});
 
 module.exports = { User, Listing, Category, Status };
