@@ -1,16 +1,17 @@
 const newFormHandler = async (event) => {
   event.preventDefault();
 
-  const name = document.querySelector('#listing-name').value.trim();
-  const lookingFor = document.querySelector('#listing-desc').value.trim();
-  const description = document.querySelector('#project-desc').value.trim();
+  const title = document.querySelector('#listing-name').value.trim();
+  // const lookingFor = document.querySelector('#looking-for').value.trim();
+  const description = document.querySelector('#listing-desc').value.trim();
   const category = document.querySelector('#listing-category').value.trim();
-
-  if (name && lookingFor && description && category) {
+  console.log('am i here?');
+  if (title && description && category) {
     //need updated route
-    const response = await fetch(`/api/projects`, {
+    console.log('or here?');
+    const response = await fetch(`/api/listings`, {
       method: 'POST',
-      body: JSON.stringify({ name, lookingFor, description, category }),
+      body: JSON.stringify({ title, description, category }),
       headers: {
         'Content-Type': 'application/json',
       },
@@ -31,7 +32,7 @@ const newFormHandler = async (event) => {
 const delButtonHandler = async (event) => {
   if (event.target.hasAttribute('data-id')) {
     const id = event.target.getAttribute('data-id');
-    //need updated route  
+    //need updated route
     const response = await fetch(`/api/projects/${id}`, {
       method: 'DELETE',
     });
@@ -45,7 +46,7 @@ const delButtonHandler = async (event) => {
 };
 
 document
-  .getElementById('listing-create')
+  .querySelector('.new-project-form')
   .addEventListener('submit', newFormHandler);
 
 document
