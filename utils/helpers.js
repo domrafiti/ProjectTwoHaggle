@@ -19,4 +19,12 @@ module.exports = {
       return `<span for="img" aria-label="gear">⚙️</span>`;
     }
   },
+
+  if_neq: (id1, id2) => {
+    if (id1 !== id2) {
+      return true;
+    } else {
+      return false;
+    }
+  },
 };
