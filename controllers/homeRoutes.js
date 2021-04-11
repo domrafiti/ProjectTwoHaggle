@@ -29,6 +29,7 @@ router.get('/', async (req, res) => {
     res.render('homepage', {
       listings,
       logged_in: req.session.logged_in,
+      logged_user: req.session.user_id,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -60,6 +61,7 @@ router.get('/listing/:id', async (req, res) => {
     res.render('listing', {
       ...listing,
       logged_in: req.session.logged_in,
+      logged_user: req.session.user_id,
     });
   } catch (err) {
     res.status(500).json(err);

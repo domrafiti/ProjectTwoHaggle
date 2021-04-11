@@ -24,14 +24,17 @@
         <h2 class="card-title">{{title}}</h2>
         <p class="card-text">{{description}}</p>
         <p class="card-text"></p>{{looking_for}}</p>
-        <p class="card-text"><small class="text-muted">Created by: {{user.name}} on {{format_date
+        <p class="card-text"><small class="text-muted">Created by: {{user.name}} on
+            {{format_date
             date_created}}</small>
         </p>
 
         {{#if logged_in}}
+        {{#if (if_neq user_id logged_user)}}
         <p>
           <button class="btn btn-primary">I am Interested!</button>
         </p>
+        {{/if}}
         {{else}}
         <a href="/login">Login</a>
         {{/if}}
