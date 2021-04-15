@@ -25,7 +25,6 @@
     "mysql2": "^2.2.5",
     "req-flash": "0.0.3",
     "sequelize": "^6.3.5"
-
   },
   "devDependencies": {
     "eslint": "^7.12.1",

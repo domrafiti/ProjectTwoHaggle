@@ -11,18 +11,16 @@ const uuid = require('uuid').v4;
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, './uploads')
+    cb(null, './uploads');
   },
   filename: (req, file, cb) => {
     const { originalname } = file;
-    // or 
+    // or
     // uuid, or fieldname
-    cb(null, originalname);
-  }
-})
+    cb(null, `${originalname}-${uuid}`);
+  },
+});
 const upload = multer({ storage }); // or simply { dest: 'uploads/' }
-
-
 
 // Homepage route
 router.get('/', async (req, res) => {
@@ -92,8 +90,8 @@ router.get('/listing/:id', async (req, res) => {
   }
 });
 
-//User Listing Route
-router.get('/listings', async (req, res) => {
+//Logged in users Listing Route
+router.get('/mylistings', async (req, res) => {
   try {
     const userData = await User.findByPk(req.session.user_id, {
       include: [
@@ -121,9 +119,40 @@ router.get('/listings', async (req, res) => {
 
     const user = userData.get({ plain: true });
 
-    res.render('listings', {
+    res.render('mylistings', {
       ...user,
       logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/listings', async (req, res) => {
+  try {
+    const listingData = await Listing.findAll({
+      include: [
+        {
+          model: User,
+          attributes: ['name', 'id'],
+        },
+        {
+          model: Category,
+          attributes: ['name'],
+        },
+        {
+          model: Status,
+          attributes: ['type'],
+        },
+      ],
+    });
+
+    const listings = listingData.map((list) => list.get({ plain: true }));
+
+    res.render('listings', {
+      listings,
+      logged_in: req.session.logged_in,
+      logged_id: req.session.user_id,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -160,7 +189,6 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
-
 router.post('/interested', async (req, res) => {
   const msg = {
     to: req.body.em_to_email, // Change to your recipient
@@ -190,12 +218,11 @@ router.post('/interested', async (req, res) => {
 
 //--------------file upload code----------------------------------//
 
-// Upload photos 
+// Upload photos
 router.post('/upload', upload.array('john-wayne'), (req, res) => {
-  console.log("posting");
+  console.log('posting');
   return res.json({ status: 'OK', uploaded: req.files.length });
 });
 //-----------------------file upload code----------------------------------//
-
 
 module.exports = router;

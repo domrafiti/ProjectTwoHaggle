@@ -4,9 +4,6 @@ const session = require('express-session');
 const exphbs = require('express-handlebars');
 const routes = require('./controllers');
 const helpers = require('./utils/helpers');
-const formidable = require('formidable');
-const readChunk = require('read-chunk');
-const fileType = require('file-type');
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const flash = require('req-flash');
@@ -25,9 +22,6 @@ const sess = {
     db: sequelize,
   }),
 };
-
-
-
 
 app.use(session(sess));
 

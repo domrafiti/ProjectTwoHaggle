@@ -1,7 +1,7 @@
 <div class="row" style="padding: 25px; background-color:#708090">
-  <div class="col-auto" >
+  <div class="col-auto">
     <!--need user image-->
-    <h2 >
+    <h2>
       Welcome,
       {{name}}
       !
@@ -24,12 +24,7 @@
         <label for="listing-name">
           Listing Name:
         </label>
-        <input
-          class="form-input"
-          type="text"
-          id="listing-name"
-          name="listing-name"
-        />
+        <input class="form-input" type="text" id="listing-name" name="listing-name" />
       </div>
       {{! <div class="form-group">
         <label for="looking-for">Looking For in Return:</label>
@@ -39,11 +34,7 @@
         <label for="listing-desc">
           Listing Description:
         </label>
-        <textarea
-          class="form-input"
-          id="listing-desc"
-          name="listing-desc"
-        ></textarea>
+        <textarea class="form-input" id="listing-desc" name="listing-desc"></textarea>
       </div>
       <div class="form-group">
 
@@ -107,52 +98,39 @@
   </div>
   <!--REUSE THIS FOR DISPLAYING LISTINGS ON LISTING ROUTE-->
   {{#if listings.length}}
-    <div class="col-md-6 project-list">
-      <!--need to include filtered get to show only users active listings-->
-      <div class="d-grid gap-2 col-6 mx-auto">
-        <a
-          class="btn btn-primary"
-          id="current-listing"
-          role="button"
-          href="/listings"
-        >
-          View my current listings
-        </a>
-      </div>
-      
-        <div>
-          <div class="d-grid  col-md-12 mx-auto">
-            {{#each listings as |listing|}}
-            <div class="row">
-              <div class="col-md-7" >
-              <a
-                class="btn btn-primary no-button"
-                id="single-listing"
-                role="button"
-                href="/listing/{{listing.id}}"
-              >
-              
-                {{listing.title}}
-              </a>
-              </div>
-              <div class="col-5">
-              <button
-                class="btn btn-sm btn-danger"
-                id="delete-btn"
-                data-id="{{listing.id}}"
-              >
-                DELETE
-              </button>
-            </div>
-            </div>
-              {{/each}}
+  <div class="col-md-6 project-list">
+    <!--need to include filtered get to show only users active listings-->
+    <div class="d-grid gap-2 col-6 mx-auto">
+      <a class="btn btn-primary" id="current-listing" role="button" href="/mylistings">
+        View my current listings
+      </a>
+    </div>
+
+    <div>
+      <div class="d-grid  col-md-12 mx-auto">
+        {{#each listings as |listing|}}
+        <div class="row">
+          <div class="col-md-7">
+            <a class="btn btn-primary no-button" id="single-listing" role="button" href="/listing/{{listing.id}}">
+
+              {{listing.title}}
+            </a>
           </div>
-         
-          {{! <div class="col-md-2"> }}
-          <!--NEED TO INCLUDE LOGIC TO REMOVE DELETE BUTTON IF SESSION USER = POSTING USER-->
-          {{! </div> }}
+          <div class="col-5">
+            <button class="btn btn-sm btn-danger" id="delete-btn" data-id="{{listing.id}}">
+              DELETE
+            </button>
+          </div>
         </div>
-        {{!-- <div class="row mb-2">
+        {{/each}}
+      </div>
+
+      {{! <div class="col-md-2"> }}
+        <!--NEED TO INCLUDE LOGIC TO REMOVE DELETE BUTTON IF SESSION USER = POSTING USER-->
+        {{!
+      </div> }}
+    </div>
+    {{!-- <div class="row mb-2">
       <div class="col-md-8">
         <!--need to have images included-->
         <h4><a href="/listing/{{listing.id}}">{{listing.title}}</a></h4>
@@ -162,8 +140,8 @@
         <button class="btn btn-sm btn-danger" data-id="{{listing.id}}">DELETE</button>
       </div>
     </div> --}}
-     
-    </div>
+
+  </div>
   {{/if}}
 </div>
 <script src="./js/listing.js"></script>
