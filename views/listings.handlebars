@@ -15,8 +15,9 @@
         <p class="card-text"><small class="text-muted">Created by {{user.name}} on {{format_date date_created}}</small>
         </p>
         <!--button is allowing us to redirect user to individual listing-->
-        <button id="listing-view" type="submit" class="btn btn-primary" href="/project/{{listing.id}}">View
-            Listing</button>
+        <a class="btn btn-primary" id="listing-view" href="/listing/{{id}}">View
+          Listing</a>
+
       </div>
     </div>
   </div>

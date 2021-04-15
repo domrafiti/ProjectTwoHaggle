@@ -46,14 +46,19 @@
         ></textarea>
       </div>
       <div class="form-group">
-        <label for="listing-category">
-          Categories:
-        </label>
-        <textarea
-          class="form-input"
-          id="listing-category"
-          name="listing-category"
-        ></textarea>
+
+        <label for="listing-category">Categories:</label>
+        <select class="form-control" id="listing-category" name="listing-category">
+          <option value="1">Automobiles</option>
+          <option value="2">Clothing</option>
+          <option value="3">Farm Equipment</option>
+          <option value="4">Furniture</option>
+          <option value="5">Miscellaneous</option>
+          <option value="6">Skilled Labor</option>
+          <option value="7">Unskilled Labor</option>
+        </select>
+        <input type="hidden" id="listing-status" name="listing-status" value="1">
+
       </div>
       <div class="form-group">
         <button id="listing-create" type="submit" class="btn btn-primary">

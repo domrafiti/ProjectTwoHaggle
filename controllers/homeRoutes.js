@@ -1,6 +1,10 @@
 const router = require('express').Router();
 const { Listing, User, Category, Status } = require('../models');
 const withAuth = require('../utils/auth');
+
+const sgMail = require('@sendgrid/mail');
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
 const multer = require('multer');
 const path = require('path');
 const uuid = require('uuid').v4;
@@ -17,6 +21,7 @@ const storage = multer.diskStorage({
   }
 })
 const upload = multer({ storage }); // or simply { dest: 'uploads/' }
+
 
 
 // Homepage route
@@ -47,6 +52,7 @@ router.get('/', async (req, res) => {
       listings,
       logged_in: req.session.logged_in,
       logged_user: req.session.user_id,
+      query: req.query,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -60,7 +66,7 @@ router.get('/listing/:id', async (req, res) => {
       include: [
         {
           model: User,
-          attributes: ['name', 'id'],
+          attributes: ['name', 'id', 'email'],
         },
         {
           model: Category,
@@ -79,6 +85,7 @@ router.get('/listing/:id', async (req, res) => {
       ...listing,
       logged_in: req.session.logged_in,
       logged_user: req.session.user_id,
+      logged_name: req.session.logged_name,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -93,6 +100,7 @@ router.get('/listings', async (req, res) => {
         {
           model: Listing,
           attributes: [
+            'id',
             'title',
             'description',
             'category_id',
@@ -152,6 +160,34 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+
+router.post('/interested', async (req, res) => {
+  const msg = {
+    to: req.body.em_to_email, // Change to your recipient
+    from: 'haggleinc@gmail.com', // Change to your verified sender
+    subject: `${req.body.em_to_name}, ${req.body.em_from_name} is interested in one of your Haggles`,
+    // text: 'Easy to do anywhere, even with Node.js',
+    html: `<p>${req.body.em_from_name} is interested in the following Haggle you posted:</p>
+    <p><strong>Title</strong>: ${req.body.em_title}<br>
+    <strong>Description</strong>: ${req.body.em_desc}<br>
+    <strong>Category</strong>: ${req.body.em_cat}</p>
+    <p><a href="http://localhost:3001/">Click Here to see ${req.body.em_from_name}'s Haggles</a></p>
+    <p>Happy Hagglin'</p>`,
+  };
+
+  try {
+    await sgMail.send(msg);
+    res.redirect('/?interest=sent');
+    return;
+  } catch (error) {
+    console.error(error);
+    if (error.response) {
+      console.error(error.response.body);
+    }
+    res.redirect('back');
+  }
+});
+
 //--------------file upload code----------------------------------//
 
 // Upload photos 
@@ -160,5 +196,6 @@ router.post('/upload', upload.array('john-wayne'), (req, res) => {
   return res.json({ status: 'OK', uploaded: req.files.length });
 });
 //-----------------------file upload code----------------------------------//
+
 
 module.exports = router;
