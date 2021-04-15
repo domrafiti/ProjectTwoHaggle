@@ -1,6 +1,23 @@
 const router = require('express').Router();
 const { Listing, User, Category, Status } = require('../models');
 const withAuth = require('../utils/auth');
+const multer = require('multer');
+const path = require('path');
+const uuid = require('uuid').v4;
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, './uploads')
+  },
+  filename: (req, file, cb) => {
+    const { originalname } = file;
+    // or 
+    // uuid, or fieldname
+    cb(null, originalname);
+  }
+})
+const upload = multer({ storage }); // or simply { dest: 'uploads/' }
+
 
 // Homepage route
 router.get('/', async (req, res) => {
@@ -134,5 +151,14 @@ router.get('/login', (req, res) => {
 
   res.render('login');
 });
+
+//--------------file upload code----------------------------------//
+
+// Upload photos 
+router.post('/upload', upload.array('john-wayne'), (req, res) => {
+  console.log("posting");
+  return res.json({ status: 'OK', uploaded: req.files.length });
+});
+//-----------------------file upload code----------------------------------//
 
 module.exports = router;
