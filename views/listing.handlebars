@@ -13,7 +13,7 @@
 <!--Need to look into allowing post owner to unlock and edit this page-->
 
 {{!-- {{#if user.name}} --}}
-<div class="card mb-3" style="max-width: 540px;">
+<div class="card mb-3" style="max-width: 540px;" id="listing-div">
   <div class="row g-0">
     <div class="col-md-4">
       <!--how do we store and upload images?-->
@@ -23,26 +23,110 @@
       <div class="card-body">
         <h2 class="card-title">{{title}}</h2>
         <p class="card-text">{{description}}</p>
-        <p class="card-text"></p>{{looking_for}}</p>
         <p class="card-text"><small class="text-muted">Created by: {{user.name}} on
             {{format_date
             date_created}}</small>
         </p>
-
+        <p>Category: {{category.name}}</p>
+        <p>Status: {{status.type}}</p>
         {{#if logged_in}}
         {{#if (if_neq user_id logged_user)}}
-        <p>
-          <button class="btn btn-primary">I am Interested!</button>
-        </p>
-        {{/if}}
+        <div class="form-group mx-1 show-it">
+          <form action="/interested" method="POST">
+            <input type="hidden" value="{{user.email}}" name="em_to_email">
+            <input type="hidden" value="{{user.name}}" name="em_to_name">
+            <input type="hidden" value="{{logged_name}}" name="em_from_name">
+            <input type="hidden" value="{{title}}" name="em_title">
+            <input type="hidden" value="{{description}}" name="em_desc">
+            <input type="hidden" value="{{category.name}}" name="em_cat">
+
+            <button id="listing-interested-btn" type="submit" class="btn btn-primary">I am Interested!</button>
+
+          </form>
+        </div>
+        <div class="form-group mx-1 hide-it">
+          <button id="listing-edit-show" class="btn btn-primary">Edit</button>
+        </div>
         {{else}}
-        <a href="/login">Login</a>
+
+        <div class="form-group mx-1  hide-it">
+          <form action="/interested" method="POST">
+            <button id="listing-interested-btn" type="submit" class="btn btn-primary">I am Interested!</button>
+          </form>
+        </div>
+
+        <div class="form-group mx-1 show-it">
+          <button id="listing-edit-show" class="btn btn-primary">Edit</button>
+        </div>
+        {{/if}}
+
+        {{else}}
+
         {{/if}}
       </div>
     </div>
   </div>
 </div>
+<div class="card mb-3" style="max-width: 540px;" id="listing-div-edit">
+  <h3 class="mx-1">Edit Listing:</h3>
+  <form class="form edit-listing-form mx-auto">
+    <div class="form-group">
+      <label for="listing-name">Listing Name:</label>
+      <input class="form-input" type="text" id="edit-listing-name" name="edit-listing-name" value="{{title}}" />
+    </div>
+    <div class="form-group">
+      <label for="listing-desc">Listing Description:</label>
+      <textarea class="form-input" id="edit-listing-desc" name="edit-listing-desc">{{description}}</textarea>
+    </div>
+    <div class="form-group mx-1">
 
+      <label for="edit-listing-category">Categories:</label>
+      <div class="row">
+        <div class="col-6">
+          <input type="radio" value="1" name="edit-listing-category" class="edit-listing-category" {{#if_status_cat
+            category_id 1}}{{/if_status_cat}}>
+          <label for="1">Automobiles</label><br>
+          <input type="radio" value="2" name="edit-listing-category" class="edit-listing-category" {{#if_status_cat
+            category_id 2}}{{/if_status_cat}}>
+          <label for="2">Clothing</label><br>
+          <input type="radio" value="3" name="edit-listing-category" class="edit-listing-category" {{#if_status_cat
+            category_id 3}}{{/if_status_cat}}>
+          <label for="3">Farm Equipment</label><br>
+          <input type="radio" value="4" name="edit-listing-category" class="edit-listing-status" {{#if_status_cat
+            category_id 4}}{{/if_status_cat}}>
+          <label for="4">Furniture</label>
+        </div>
+        <div class="col-6">
+          <input type="radio" value="5" name="edit-listing-category" class="edit-listing-category" {{#if_status_cat
+            category_id 5}}{{/if_status_cat}}>
+          <label for="5">Miscellaneous</label><br>
+          <input type="radio" value="6" name="edit-listing-category" class="edit-listing-category" {{#if_status_cat
+            category_id 6}}{{/if_status_cat}}>
+          <label for="6">Skilled Labor</label><br>
+          <input type="radio" value="7" name="edit-listing-category" class="edit-listing-category" {{#if_status_cat
+            category_id 7}}{{/if_status_cat}}>
+          <label for="7">Unskilled Labor</label>
+        </div>
+      </div>
+    </div>
+    <div class="form-group mx-1">
+      <label for="edit-listing-status">Status:</label><br>
+      <input type="radio" value="1" name="edit-listing-status" class="edit-listing-status" {{#if_status_cat status_id
+        1}}{{/if_status_cat}}>
+      <label for="1">Active</label><br>
+      <input type="radio" value="2" name="edit-listing-status" class="edit-listing-status" {{#if_status_cat status_id
+        2}}{{/if_status_cat}}>
+      <label for="2">Pending</label><br>
+      <input type="radio" value="3" name="edit-listing-status" class="edit-listing-status" {{#if_status_cat status_id
+        3}}{{/if_status_cat}}>
+      <label for="3">Accepted</label>
+    </div>
+    <div class="form-group mx-1">
+      <input type="hidden" id="edit-listing-id" name="edit-listing-id" value="{{id}}">
+      <button id="listing-edit-btn" type="submit" class="btn btn-primary">Edit</button>
+    </div>
+  </form>
+</div>
 {{!-- 4. Listing/One -- MVP Ready
 A. include listing information (photos, details, looking for, description, etc.)
 B. Check login status:
@@ -53,3 +137,5 @@ NO
 a. Prompt to login - redirect
 C. OWNER:
 a. unlock page to edit --}}
+
+<script src="/js/edit-listing.js"></script>

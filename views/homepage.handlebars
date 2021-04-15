@@ -62,3 +62,26 @@
 </div>
 {{/if}}
 {{/each}}
+{{#if (if_neq query.interest 'sent')}}
+{{else}}
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Let the Hagglin' begin!</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Your message has been sent.</p>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $(window).on('load', function () {
+    $('#exampleModal').modal('show');
+  });
+</script>
+{{/if}}

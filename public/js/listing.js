@@ -4,14 +4,15 @@ const newFormHandler = async (event) => {
   const title = document.querySelector('#listing-name').value.trim();
   // const lookingFor = document.querySelector('#looking-for').value.trim();
   const description = document.querySelector('#listing-desc').value.trim();
-  const category = document.querySelector('#listing-category').value.trim();
+  const category_id = document.querySelector('#listing-category').value.trim();
+  const status_id = document.querySelector('#listing-status').value.trim();
   console.log('am i here?');
-  if (title && description && category) {
+  if (title && description && category_id && status_id) {
     //need updated route
     console.log('or here?');
     const response = await fetch(`/api/listings`, {
       method: 'POST',
-      body: JSON.stringify({ title, description, category }),
+      body: JSON.stringify({ title, description, category_id, status_id }),
       headers: {
         'Content-Type': 'application/json',
       },

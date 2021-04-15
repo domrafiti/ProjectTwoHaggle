@@ -1,30 +1,58 @@
 [
   {
-    "title": "Listing title number one",
-    "description": "Description text number one",
+    "title": "Barber",
+    "description": "Clean ya up real nice",
     "user_id": 3,
     "status_id": 1,
-    "category_id":2
+    "category_id":6
   },
     {
-    "title": "Listing title number two",
-    "description": "Description text number two",
-    "user_id": 1,
-    "status_id": 2,
+    "title": "Riding Mower",
+    "description": "John Deere Z335E 20-HP V-Twin Dual Hydrostatic 42-in Zero-Turn Lawn Mower with Mulching Capability",
+    "user_id": 4,
+    "status_id": 1,
     "category_id":3
   },
   {
-    "title": "Listing title number three",
-    "description": "Description text number three",
-    "user_id": 2,
-    "status_id": 3,
-    "category_id":1
+    "title": "Overalls",
+    "description": "Don't fit no more",
+    "user_id": 5,
+    "status_id": 1,
+    "category_id":2
   },
   {
-    "title": "Listing title number four",
-    "description": "Description text number four",
+    "title": "Banjo Lessons",
+    "description": "I'll teach ya to pluck",
     "user_id": 3,
-    "status_id": 2,
+    "status_id": 1,
+    "category_id":6
+  },
+  {
+    "title": "Hat Collection",
+    "description": "Over 300 ball caps",
+    "user_id": 2,
+    "status_id": 1,
     "category_id":2
+  },
+  {
+    "title": "House Cleaning",
+    "description": "Cleaning services for trade. Dusting, mopping, vacuuming",
+    "user_id": 7,
+    "status_id": 1,
+    "category_id":7
+  },
+  {
+    "title": "Leather Couch",
+    "description": "Moving. Looking to trade for help moving.",
+    "user_id": 6,
+    "status_id": 1,
+    "category_id":4
+  },
+  {
+    "title": "Artwork and Paintings",
+    "description": "Moving. Looking to trade for help moving.",
+    "user_id": 6,
+    "status_id": 1,
+    "category_id":5
   }
 ]

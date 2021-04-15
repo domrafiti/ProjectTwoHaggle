@@ -1,14 +1,9 @@
 [
-  {
-    "name": "Shoes"
-  },
-    {
-    "name": "Car parts"
-  },
-  {
-    "name": "shirts"
-  },
-  {
-    "name": "tools"
-  }
+  {"name": "Automobiles"},
+  {"name": "Clothing"},
+  {"name": "Farm Equipment"},
+  {"name": "Furniture"},
+  {"name": "Miscellaneous"},
+  {"name": "Skilled Labor"},
+  {"name": "Unskilled Labor"}
 ]
