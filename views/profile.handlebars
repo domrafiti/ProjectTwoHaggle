@@ -1,29 +1,52 @@
-<div class="row">
-  <div class="col-auto">
+<div class="row" style="padding: 25px; background-color:#708090">
+  <div class="col-auto" >
     <!--need user image-->
-    <h2>Welcome, {{name}}!</h2>
-    <h4>{{bio}}</h4>
-    <h5>{{rating}}</h5>
+    <h2 >
+      Welcome,
+      {{name}}
+      !
+    </h2>
+    <h4>
+      {{bio}}
+    </h4>
+    <h5>
+      {{rating}}
+    </h5>
   </div>
 </div>
-
 <div class="row mt-4">
   <div class="col-md-6">
-    <h3>Create a New Listing:</h3>
+    <h3>
+      Create a New Listing:
+    </h3>
     <form class="form new-project-form">
       <div class="form-group">
-        <label for="listing-name">Listing Name:</label>
-        <input class="form-input" type="text" id="listing-name" name="listing-name" />
+        <label for="listing-name">
+          Listing Name:
+        </label>
+        <input
+          class="form-input"
+          type="text"
+          id="listing-name"
+          name="listing-name"
+        />
       </div>
-      {{!-- <div class="form-group">
+      {{! <div class="form-group">
         <label for="looking-for">Looking For in Return:</label>
         <input class="form-input" type="number" id="looking-for" name="looking-for" />
-      </div> --}}
+      </div> }}
       <div class="form-group">
-        <label for="listing-desc">Listing Description:</label>
-        <textarea class="form-input" id="listing-desc" name="listing-desc"></textarea>
+        <label for="listing-desc">
+          Listing Description:
+        </label>
+        <textarea
+          class="form-input"
+          id="listing-desc"
+          name="listing-desc"
+        ></textarea>
       </div>
       <div class="form-group">
+
         <label for="listing-category">Categories:</label>
         <select class="form-control" id="listing-category" name="listing-category">
           <option value="1">Automobiles</option>
@@ -35,22 +58,101 @@
           <option value="7">Unskilled Labor</option>
         </select>
         <input type="hidden" id="listing-status" name="listing-status" value="1">
+
       </div>
       <div class="form-group">
-        <button id="listing-create" type="submit" class="btn btn-primary">Create</button>
+        <button id="listing-create" type="submit" class="btn btn-primary">
+          Create
+        </button>
       </div>
     </form>
-  </div>
 
+    <!--UPLOAD PHOTO CODE BEGINS HERE -->
+    <div class="row">
+      <div class="col-md-12">
+        <div id="uploadedPhotos" class="row"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-12">
+        <!-- Progress Bar -->
+        <div class="row">
+          <div class="col-md-4">
+            <div class="progress">
+              <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="0"
+                aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                <span class="sr-only"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Photos upload Form -->
+        <!-- <form id="upload-photos" method="post" action="/upload_photos" enctype="multipart/form-data">-->
+        <form id="upload-photos" action="/upload" method="post" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="photos-input">Browse Multiple Images to Upload</label>
+            <input id="photos" type="file" name="john-wayne" multiple>
+          </div>
+          <input type="hidden" name="csrf_token" value="just_a_text_field" />
+          <br />
+          <button>Submit</button>
+          <!--<input class="btn btn-primary" type="submit" name="Photo Uploads" value="Upload Images" />-->
+        </form>
+        <br />
+      </div>
+      <div class="col-md-4"></div>
+    </div>
+    <!--UPLOAD CODE ENDS HERE--->
+  </div>
   <!--REUSE THIS FOR DISPLAYING LISTINGS ON LISTING ROUTE-->
   {{#if listings.length}}
-  <div class="col-md-6 project-list">
-    <!--need to include filtered get to show only users active listings-->
-    <h3><a href="/listings">View my current listings</a></h3>
-
-
-    {{#each listings as |listing|}}
-    <div class="row mb-2">
+    <div class="col-md-6 project-list">
+      <!--need to include filtered get to show only users active listings-->
+      <div class="d-grid gap-2 col-6 mx-auto">
+        <a
+          class="btn btn-primary"
+          id="current-listing"
+          role="button"
+          href="/listings"
+        >
+          View my current listings
+        </a>
+      </div>
+      
+        <div>
+          <div class="d-grid  col-md-12 mx-auto">
+            {{#each listings as |listing|}}
+            <div class="row">
+              <div class="col-md-7" >
+              <a
+                class="btn btn-primary no-button"
+                id="single-listing"
+                role="button"
+                href="/listing/{{listing.id}}"
+              >
+              
+                {{listing.title}}
+              </a>
+              </div>
+              <div class="col-5">
+              <button
+                class="btn btn-sm btn-danger"
+                id="delete-btn"
+                data-id="{{listing.id}}"
+              >
+                DELETE
+              </button>
+            </div>
+            </div>
+              {{/each}}
+          </div>
+         
+          {{! <div class="col-md-2"> }}
+          <!--NEED TO INCLUDE LOGIC TO REMOVE DELETE BUTTON IF SESSION USER = POSTING USER-->
+          {{! </div> }}
+        </div>
+        {{!-- <div class="row mb-2">
       <div class="col-md-8">
         <!--need to have images included-->
         <h4><a href="/listing/{{listing.id}}">{{listing.title}}</a></h4>
@@ -59,10 +161,9 @@
         <!--NEED TO INCLUDE LOGIC TO REMOVE DELETE BUTTON IF SESSION USER = POSTING USER-->
         <button class="btn btn-sm btn-danger" data-id="{{listing.id}}">DELETE</button>
       </div>
+    </div> --}}
+     
     </div>
-    {{/each}}
-  </div>
   {{/if}}
 </div>
-
 <script src="./js/listing.js"></script>

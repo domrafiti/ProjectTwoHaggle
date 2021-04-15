@@ -4,6 +4,9 @@ const session = require('express-session');
 const exphbs = require('express-handlebars');
 const routes = require('./controllers');
 const helpers = require('./utils/helpers');
+const formidable = require('formidable');
+const readChunk = require('read-chunk');
+const fileType = require('file-type');
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const flash = require('req-flash');
@@ -23,6 +26,9 @@ const sess = {
   }),
 };
 
+
+
+
 app.use(session(sess));
 
 // Inform Express.js on which template engine to use
@@ -32,9 +38,11 @@ app.set('view engine', 'handlebars');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
+//adding this for uploads
+app.use('/uploads', express.static('uploads'));
 
 app.use(routes);
 app.use(flash());
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log('Now listening'));
+  app.listen(PORT, () => console.log('Now listening on http://localhost:3001'));
 });

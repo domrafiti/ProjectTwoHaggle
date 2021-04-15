@@ -11,22 +11,27 @@
     integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="/css/jass.css">
   <link rel="stylesheet" href="/css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+   <link rel="stylesheet" href="/css/haggle.css">
+   <script src="https://kit.fontawesome.com/8068cbae87.js" crossorigin="anonymous"></script>
+   <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Karantina:wght@300;400&display=swap" rel="stylesheet">
 </head>
 
 <body>
   <div class="flex-column justify-space-around">
     <header class="display-flex justify-space-between align-center p-2">
       <h1>
-        <span role="img" aria-label="money">💸</span>
-        <a href="/">Are you ready to Haggle?</a>
+        <span role="img" aria-label="money"><i class="fas fa-hands-helping"></i></span>
+        <a id="header" class="no-button" role="button" href="/">Are you ready to Haggle?</a>
       </h1>
       <nav>
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
-        <a href="/profile">profile</a> |
+        <a id="header" class="no-button" role="button" href="/profile">profile</a> |
         <button class="no-button" id="logout">logout</button>
         {{else}}
-        <a href="/login">login</a>
+        <a class="no-button" id="header" role="button" href="/login">login</a>
         {{/if}}
       </nav>
     </header>

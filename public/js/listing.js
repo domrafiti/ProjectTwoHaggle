@@ -53,3 +53,7 @@ document
 document
   .querySelector('.project-list')
   .addEventListener('click', delButtonHandler);
+
+
+//----------------------------UPLOAD CODE STARTS HERE------------//
+//--------------------------UPLOAD CODE ENDS HERE--------------------------------------//

@@ -34,4 +34,7 @@ header,
 
 .hide-it {
   display: none;
+.btn.btn-danger{
+  background-color: #A52A2A ;
+  float: right;
 }
