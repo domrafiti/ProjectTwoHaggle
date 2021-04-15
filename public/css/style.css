@@ -22,3 +22,8 @@ header, .project:not(:last-child) {
   font-weight: bold;
   margin-left: -5px;
 }
+
+.btn.btn-danger{
+  background-color: #A52A2A ;
+  float: right;
+}
