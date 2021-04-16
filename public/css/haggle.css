@@ -1,18 +1,17 @@
 * {
   font-family: 'Karantina', cursive;
 }
-header a,
-#header {
-  color: white;
-  font-size: 50px !important;
+.nav-div {
+  color: black;
+  font-size: 2rem !important;
 }
-#logout {
+.nav-btn {
   color: white;
+  font-size: 3rem !important;
 }
 
 header {
   background: #708090;
-  font-size: 50px !important;
   padding: 100px !important;
   border-bottom: 3px solid black;
 }
@@ -47,4 +46,12 @@ body {
 
 #single-listing {
   float: left !important;
+}
+
+.carousel-custom {
+  max-width: 800px;
+}
+
+.carousel-caption-custom {
+  background: rgba(0, 0, 0, 0.5);
 }
