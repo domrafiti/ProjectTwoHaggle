@@ -27,10 +27,10 @@
     "sequelize": "^6.3.5"
   },
   "devDependencies": {
+    "@sendgrid/mail": "^7.4.2",
     "eslint": "^7.12.1",
     "eslint-config-prettier": "^6.15.0",
-    "prettier": "^2.1.2",
-    "@sendgrid/mail": "^7.4.2"
+    "prettier": "^2.1.2"
   },
   "repository": {
     "type": "git",

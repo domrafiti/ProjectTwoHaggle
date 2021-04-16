@@ -9,18 +9,7 @@ const multer = require('multer');
 const path = require('path');
 const uuid = require('uuid').v4;
 
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, './uploads');
-  },
-  filename: (req, file, cb) => {
-    const { originalname } = file;
-    // or
-    // uuid, or fieldname
-    cb(null, `${originalname}-${uuid}`);
-  },
-});
-const upload = multer({ storage }); // or simply { dest: 'uploads/' }
+
 
 // Homepage route
 router.get('/', async (req, res) => {
@@ -217,11 +206,40 @@ router.post('/interested', async (req, res) => {
 });
 
 //--------------file upload code----------------------------------//
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, './uploads');
+  },
+  filename: (req, file, cb) => {
+    const { originalname } = file;
 
+    // or
+    // uuid, or fieldnamed
+    cb(null, `${uuid()}-${originalname}`);
+  },
+});
+const upload = multer({ storage }); // or simply { dest: 'uploads/' }
 // Upload photos
-router.post('/upload', upload.array('john-wayne'), (req, res) => {
+router.post('/upload', upload.array('john-wayne'), async (req, res) => {
   console.log('posting');
-  return res.json({ status: 'OK', uploaded: req.files.length });
+  console.log(req.body, req.files[0].path);
+  try {
+    const newListing = await Listing.create({
+      // ...req.body,
+      title: req.body.listing_name,
+      description: req.body.listing_desc,
+      user_id: req.session.user_id,
+      category_id: req.body.listing_category,
+      status_id: req.body.listing_status,
+      image_path: req.files[0].path,
+    });
+
+    //res.status(200).json(newListing);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+  res.redirect('/profile');
+
 });
 //-----------------------file upload code----------------------------------//
 
