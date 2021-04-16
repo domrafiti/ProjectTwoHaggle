@@ -356,7 +356,8 @@ body {
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+    Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
   font-size: 16px;
   color: #1a1a1a;
 }
@@ -1140,11 +1141,11 @@ form .form-label {
 }
 
 form .form-input {
-  width: 100%;
+  width: 90%;
   padding: 0.75rem;
   color: #1a1a1a;
   background-color: #ffffff;
-  margin: 0.625rem 0;
+  margin: auto;
   font-size: 1.2rem;
   border: 1px solid #484848;
   border-radius: 0.3rem;
@@ -1159,8 +1160,8 @@ form [type='radio'] {
   display: inline-block;
 }
 
-label form [type='checkbox'], label
-form [type='radio'] {
+label form [type='checkbox'],
+label form [type='radio'] {
   display: inline-block;
 }
 

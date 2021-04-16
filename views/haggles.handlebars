@@ -1,27 +1,33 @@
+<!--FILTERING NEEDED-->
+{{#if listings.length}}
+<h1>{{name}}'s Haggles:</h1>
 {{#each listings as |listing| }}
-<div class="card mb-3 mx-auto" style="max-width: 540px;">
+
+<div class="card mb-3" style="max-width: 540px;">
   <div class="row g-0">
     <div class="col-md-4">
-      <img src="{{image_path}}" alt="..." class="my-listing-photo">
+      <!--need image here -->
+      <img src="..." alt="...">
     </div>
     <div class="col-md-8">
       <div class="card-body">
         <h5 class="card-title">{{title}}</h5>
         <p class="card-text">{{description}}</p>
         {{!-- <p class="card-text">{{looking_for}}</p> --}}
-        <p class="card-text"><small class="text-muted">Created by {{../logged_name}} on {{format_date
+        <p class="card-text"><small class="text-muted">Created by {{../name}} on {{format_date
             date_created}}</small>
         </p>
         <!--button is allowing us to redirect user to individual listing-->
-        <a class="btn btn-primary" id="listing-view" href="/listing/{{id}}">View
-          Listing</a>
+        <button class="btn btn-primary" haggle-id="{{id}}">Accept</button>
 
       </div>
     </div>
   </div>
 </div>
 {{/each}}
-
+{{else}}
+<h1>{{name}} has no Haggles.</h1>
+{{/if}}
 {{!-- 3. Listings/Browsing - login status doesnt matter
 A. Continuous Scroll/Pages
 B. Present Listings

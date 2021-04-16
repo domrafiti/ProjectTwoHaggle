@@ -1,18 +1,17 @@
 * {
   font-family: 'Karantina', cursive;
 }
-header a,
-#header {
-  color: white;
-  font-size: 50px !important;
+.nav-div {
+  color: black;
+  font-size: 2rem !important;
 }
-#logout {
+.nav-btn {
   color: white;
+  font-size: 3rem !important;
 }
 
 header {
   background: #708090;
-  font-size: 50px !important;
   padding: 100px !important;
   border-bottom: 3px solid black;
 }
@@ -31,22 +30,40 @@ body {
   border-color: aliceblue;
   background-color: #d2691e;
   font-size: 24px;
-  /* float: left; */
+  
 }
 
 #delete-btn {
   font-size: 24px;
-  float: right;
+  margin-top: 5px;
+
+
+}
+.welcome, h1{
+  float: left;
+  right: 30px;
 }
 
 #current-listing {
-  position: relative;
-  bottom: 67px;
-  left: 50%;
+   position: relative;
+  bottom: 5px;
+  left: 131%;
+  
+  
 }
 
 #single-listing {
   float: left !important;
+  font-size: 24px !important;
+  margin-top: 5px;
+}
+
+.carousel-custom {
+  max-width: 800px;
+}
+
+.carousel-caption-custom {
+  background: rgba(0, 0, 0, 0.5);
 }
 
 .my-listing-photo {

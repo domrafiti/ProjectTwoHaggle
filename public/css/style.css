@@ -10,7 +10,7 @@ header,
   cursor: pointer;
   color: #1b89bc;
   text-decoration: none;
-  font-size: 100%;
+  font-size: 1em !important;
 }
 
 .no-button:hover {
@@ -34,7 +34,8 @@ header,
 
 .hide-it {
   display: none;
-.btn.btn-danger{
-  background-color: #A52A2A ;
+}
+.btn.btn-danger {
+  background-color: #a52a2a;
   float: right;
 }

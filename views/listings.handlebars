@@ -1,6 +1,6 @@
 {{#each listings as |listing| }}
-{{user_id}} {{logged_id}}
-<div class="card mb-3" style="max-width: 540px;">
+{{#if (if_neq user_id ../logged_id)}}
+<div class="card mb-3 mx-auto" style="max-width: 540px;">
   <div class="row g-0">
     <div class="col-md-4">
       <!--need image here -->
@@ -21,6 +21,7 @@
     </div>
   </div>
 </div>
+{{/if}}
 {{/each}}
 
 {{!-- 3. Listings/Browsing - login status doesnt matter

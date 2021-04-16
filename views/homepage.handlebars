@@ -28,7 +28,7 @@
 
     <div class="carousel-item active">
       <img src="/uploads/barter.jpeg" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block" style="background-color: #708090;">
+      <div class="carousel-caption carousel-caption-custom">
         <h5>Welcome to Haggle!</h5>
         <p>Scroll through to see current listings!</p>
       </div>
@@ -36,10 +36,10 @@
 
     {{#each listings as |listing| }}
     <div class="carousel-item">
-      <img src="{{listing.image_path}}" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block" style="background-color: #708090;">
-        <h5>{{listing.title}}</h5>
-        <p>{{listing.description}}</p>
+      <img src="{{image_path}}" class="d-block w-100" alt="...">
+      <div class="carousel-caption carousel-caption-custom">
+        <h5>{{title}}</h5>
+        <p>{{description}}</p>
       </div>
     </div>
     {{/each}}
