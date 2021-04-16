@@ -1,57 +1,50 @@
 * {
-    font-family: 'Karantina', cursive;
-    
-    
+  font-family: 'Karantina', cursive;
 }
-header a, #header{
-color: white;
-font-size: 50px !important;
+header a,
+#header {
+  color: white;
+  font-size: 50px !important;
 }
 #logout {
-    color: white
+  color: white;
 }
 
-header{
-    background: #708090;
-    font-size: 50px !important;
-    padding: 100px !important;
-    border-bottom: 3px solid black;
+header {
+  background: #708090;
+  font-size: 50px !important;
+  padding: 100px !important;
+  border-bottom: 3px solid black;
 }
 
-body{
-    background: url("../img/woodbackground.png") ;
-
+body {
+  background: url('../img/woodbackground.png');
 }
 
-.container{
-    padding: 20px;
-    background:#F5F5F5 ;
-    border: 1px solid #2F5881;
-    
-   
+.container {
+  padding: 20px;
+  background: #f5f5f5;
+  border: 1px solid #2f5881;
 }
 
-
-.btn.btn-primary{
-border-color: aliceblue;
-    background-color: #D2691E;
-    font-size: 24px;
-    /* float: left; */
+.btn.btn-primary {
+  border-color: aliceblue;
+  background-color: #d2691e;
+  font-size: 24px;
+  /* float: left; */
 }
 
-#delete-btn{
-    font-size: 24px;
-    float: right;
-
+#delete-btn {
+  font-size: 24px;
+  float: right;
 }
 
-#current-listing{
-    position: relative;
-    bottom: 67px;
-    left: 50%;
+#current-listing {
+  position: relative;
+  bottom: 67px;
+  left: 50%;
 }
-
 
 #single-listing {
-    float: left !important;
+  float: left !important;
 }
