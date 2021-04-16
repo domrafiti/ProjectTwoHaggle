@@ -65,3 +65,8 @@ body {
 .carousel-caption-custom {
   background: rgba(0, 0, 0, 0.5);
 }
+
+.my-listing-photo {
+  max-height: 180px;
+  max-width: 180px;
+}
