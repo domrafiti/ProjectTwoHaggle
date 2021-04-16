@@ -25,10 +25,10 @@
     "mysql2": "^2.2.5",
     "nodemon": "^2.0.7",
     "req-flash": "0.0.3",
-    "sequelize": "^6.3.5"
+    "sequelize": "^6.3.5",
+    "@sendgrid/mail": "^7.4.2"
   },
   "devDependencies": {
-    "@sendgrid/mail": "^7.4.2",
     "eslint": "^7.12.1",
     "eslint-config-prettier": "^6.15.0",
     "prettier": "^2.1.2"
