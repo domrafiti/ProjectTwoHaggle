@@ -46,7 +46,12 @@ Listing.init(
     },
     image_path: {
       type: DataTypes.STRING,
-
+    },
+    image_path_two: {
+      type: DataTypes.STRING,
+    },
+    image_path_three: {
+      type: DataTypes.STRING,
     },
   },
   {

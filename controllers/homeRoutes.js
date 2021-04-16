@@ -9,7 +9,7 @@ const multer = require('multer');
 const path = require('path');
 const uuid = require('uuid').v4;
 
-// Homepage route
+
 router.get('/', async (req, res) => {
   try {
     const listingData = await Listing.findAll({
@@ -29,10 +29,10 @@ router.get('/', async (req, res) => {
       ],
     });
 
-    // Serialize data so the template can read it
+
     const listings = listingData.map((listing) => listing.get({ plain: true }));
 
-    // Pass serialized data and session flag into template
+
     res.render('homepage', {
       listings,
       logged_in: req.session.logged_in,
@@ -44,7 +44,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-//Individiual Listing Route
+
 router.get('/listing/:id', async (req, res) => {
   try {
     const listingData = await Listing.findByPk(req.params.id, {
@@ -77,7 +77,7 @@ router.get('/listing/:id', async (req, res) => {
   }
 });
 
-// Use withAuth middleware to prevent access to route
+
 router.get('/haggles/:id', withAuth, async (req, res) => {
   try {
     const userData = await User.findByPk(req.params.id, {
@@ -99,7 +99,7 @@ router.get('/haggles/:id', withAuth, async (req, res) => {
   }
 });
 
-//Logged in users Listing Route
+
 router.get('/mylistings', async (req, res) => {
   try {
     const userData = await User.findByPk(req.session.user_id, {
@@ -116,14 +116,7 @@ router.get('/mylistings', async (req, res) => {
             'image_path',
           ],
         },
-        // {
-        //   model: Category,
-        //   attributes: ['name'],
-        // },
-        // {
-        //   model: Status,
-        //   attributes: ['type'],
-        // },
+
       ],
     });
 
@@ -173,10 +166,10 @@ router.get('/listings', async (req, res) => {
   }
 });
 
-// Use withAuth middleware to prevent access to route
+
 router.get('/profile', withAuth, async (req, res) => {
   try {
-    // Find the logged in user based on the session ID
+
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
       include: [{ model: Listing }],
@@ -194,7 +187,7 @@ router.get('/profile', withAuth, async (req, res) => {
 });
 
 router.get('/login', (req, res) => {
-  // If the user is already logged in, redirect the request to another route
+
   if (req.session.logged_in) {
     res.redirect('back');
     return;
@@ -203,42 +196,42 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
-//--------------file upload code----------------------------------//
+
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, './uploads');
+    cb(null, './public/uploads');
   },
   filename: (req, file, cb) => {
     const { originalname } = file;
 
-    // or
-    // uuid, or fieldnamed
     cb(null, `${uuid()}-${originalname}`);
   },
 });
-const upload = multer({ storage }); // or simply { dest: 'uploads/' }
-// Upload photos
+const upload = multer({ storage });
+
 router.post('/upload', upload.array('john-wayne'), async (req, res) => {
   console.log('posting');
   console.log(req.body, req.files[0].path);
   try {
     const newListing = await Listing.create({
-      // ...req.body,
+
       title: req.body.listing_name,
       description: req.body.listing_desc,
       user_id: req.session.user_id,
       category_id: req.body.listing_category,
       status_id: req.body.listing_status,
       image_path: req.files[0].path,
+      image_path_two: req.files[1].path,
+      image_path_three: req.files[2].path,
     });
 
-    //res.status(200).json(newListing);
+
   } catch (err) {
     res.status(400).json(err);
   }
   res.redirect('/profile');
 });
-//-----------------------file upload code----------------------------------//
+
 router.post('/interested', async (req, res) => {
   const msg = {
     to: req.body.em_to_email, // Change to your recipient
@@ -478,15 +471,12 @@ router.post('/interested', async (req, res) => {
   
                                 <div class="v-text-align"
                                   style="color: #ffffff; line-height: 140%; text-align: center; word-wrap: break-word;">
-                                  <p><strong>Title</strong>: ${
-                                    req.body.em_title
-                                  }<br>
-                                    <strong>Description</strong>: ${
-                                      req.body.em_desc
-                                    }<br>
-                                    <strong>Category</strong>: ${
-                                      req.body.em_cat
-                                    }
+                                  <p><strong>Title</strong>: ${req.body.em_title
+      }<br>
+                                    <strong>Description</strong>: ${req.body.em_desc
+      }<br>
+                                    <strong>Category</strong>: ${req.body.em_cat
+      }
                                   </p>
                                 </div>
   
@@ -526,9 +516,8 @@ router.post('/interested', async (req, res) => {
   
                                 <div class="v-text-align" align="center">
                                   <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-spacing: 0; border-collapse: collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;font-family:'Montserrat',sans-serif;"><tr><td class="v-text-align" style="font-family:'Montserrat',sans-serif;" align="center"><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="" style="height:36px; v-text-anchor:middle; width:260px;" arcsize="11%" stroke="f" fillcolor="#eec60e"><w:anchorlock/><center style="color:#FFFFFF;font-family:'Montserrat',sans-serif;"><![endif]-->
-                                  <a href="http://localhost:3001/haggles/${
-                                    req.body.em_from_id
-                                  }" target="_blank"
+                                  <a href="http://localhost:3001/haggles/${req.body.em_from_id
+      }" target="_blank"
                                     style="box-sizing: border-box;display: inline-block;font-family:'Montserrat',sans-serif;text-decoration: none;-webkit-text-size-adjust: none;text-align: center;color: #FFFFFF; background-color: #eec60e; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; width:auto; max-width:100%; overflow-wrap: break-word; word-break: break-word; word-wrap:break-word; mso-border-alt: none;">
                                     <span style="display:block;padding:10px 70px;line-height:120%;"><strong><span
                                           style="font-size: 14px; line-height: 16.8px;">CLICK HERE TO SEE

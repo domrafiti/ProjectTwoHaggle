@@ -1,15 +1,13 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
-
-//----------ALL NEW---------//
 const multer = require('multer');
 const uuid = require('uuid').v4;
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     console.log("check");
-    cb(null, './tmp_uploads/');
+    cb(null, './public/tmp_uploads/');
   },
   filename: (req, file, cb) => {
     const { originalname } = file;
@@ -17,36 +15,33 @@ const storage = multer.diskStorage({
   },
 });
 
-const upload = multer({ storage }); // or simply { dest: 'uploads/' }
-
+const upload = multer({ storage });
 router.post('/', upload.array('bruce-wayne'), async (req, res) => {
-  //console.log(req.body, req.files);
+  console.log(req.body, req.files);
 
   try {
+    console.log("IM TRYING");
     const userData = await User.create({
       name: req.body.name,
       email: req.body.email,
       password: req.body.password,
       picture_path: req.files[0].path,
     });
+    console.log("create Complete");
 
-    res.redirect('/profile');
 
     req.session.save(() => {
       console.log("saving session");
       req.session.user_id = userData.id;
       req.session.logged_in = true;
-
-      //res.status(200).json(userData);
     });
-
+    res.redirect('/profile');
   } catch (err) {
     res.status(400).json(err);
   }
 
 
 });
-//-----------------------ENDS HERE---------------------------------------//
 
 router.post('/login', async (req, res) => {
   try {

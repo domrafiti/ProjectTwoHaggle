@@ -2,18 +2,18 @@ const router = require('express').Router();
 const { Listing } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-router.post('/', withAuth, async (req, res) => {
-  try {
-    const newListing = await Listing.create({
-      ...req.body,
-      user_id: req.session.user_id,
-    });
+// router.post('/', withAuth, async (req, res) => {
+//   try {
+//     const newListing = await Listing.create({
+//       ...req.body,
+//       user_id: req.session.user_id,
+//     });
 
-    res.status(200).json(newListing);
-  } catch (err) {
-    res.status(400).json(err);
-  }
-});
+//     res.status(200).json(newListing);
+//   } catch (err) {
+//     res.status(400).json(err);
+//   }
+// });
 
 router.put('/:id', async (req, res) => {
   try {
