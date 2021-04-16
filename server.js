@@ -6,6 +6,7 @@ const routes = require('./controllers');
 const helpers = require('./utils/helpers');
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const sgMail = require('@sendgrid/mail');
 const flash = require('req-flash');
 const app = express();
 const PORT = process.env.PORT || 3001;
