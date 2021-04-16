@@ -96,30 +96,27 @@
       </a>
     </div>
 
-    <div>
-      <div class="d-grid  col-md-12 mx-auto">
-        {{#each listings as |listing|}}
-        <div class="row">
-          <div class="col-md-7">
-            <a class="btn btn-primary no-button" id="single-listing" role="button" href="/listing/{{listing.id}}">
-
-              {{listing.title}}
-            </a>
-          </div>
-          <div class="col-5">
-            <button class="btn btn-sm btn-danger" id="delete-btn" data-id="{{listing.id}}">
-              DELETE
-            </button>
-          </div>
+    <div class="d-grid  col-md-12 mx-auto">
+      {{#each listings as |listing|}}
+      <div class="row">
+        <div class="col-md-7">
+          <a class="btn btn-primary no-button" id="single-listing" role="button" href="/listing/{{listing.id}}">
+            {{listing.title}}
+          </a>
         </div>
-        {{/each}}
+        <div class="col-5">
+          <button class="btn btn-sm btn-danger" id="delete-btn" data-id="{{listing.id}}">
+            DELETE
+          </button>
+        </div>
       </div>
-
-      {{! <div class="col-md-2"> }}
-        <!--NEED TO INCLUDE LOGIC TO REMOVE DELETE BUTTON IF SESSION USER = POSTING USER-->
-        {{!
-      </div> }}
+      {{/each}}
     </div>
+
+    {{! <div class="col-md-2"> }}
+      <!--NEED TO INCLUDE LOGIC TO REMOVE DELETE BUTTON IF SESSION USER = POSTING USER-->
+      {{!
+    </div> }}
     {{!-- <div class="row mb-2">
       <div class="col-md-8">
         <!--need to have images included-->
