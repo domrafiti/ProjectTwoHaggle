@@ -1,24 +1,42 @@
-<div class="row" style="padding: 25px; background-color:#708090">
-  <div class="col-auto">
+
+<div class="row" style="padding: 25px; background-color:#708090; margin:-20px; border-bottom: solid black 1px"  >
+  
+  <div class="col-12">
     <!--need user image-->
-    <h2>
+  <div class="welcome col-3">
+    <h1>
       Welcome,
       {{name}}
       !
-    </h2>
+    </h1>
+      
+    </div>
+    
+   
+    <div class="bio">
     <h4>
       {{bio}}
     </h4>
+    </div>
+
+<div class="rating">
     <h5>
       {{rating}}
     </h5>
+    </div>
+
+    <div class="d-grid gap-2 col-3 mx-auto">
+      <a class="btn btn-primary" id="current-listing" role="button" href="/mylistings">
+        My listings
+      </a>
+    </div>
   </div>
 </div>
 <div class="row mt-4">
   <div class="col-md-6">
-    <h3>
+    <h2>
       Create a New Listing:
-    </h3>
+    </h2>
     <form class="form new-project-form" id="upload-photos" action="/upload" method="post" enctype="multipart/form-data">
 
       <label for="listing-name">
@@ -90,26 +108,24 @@
   {{#if listings.length}}
   <div class="col-md-6">
     <!--need to include filtered get to show only users active listings-->
-    <div class="d-grid gap-2 col-6 mx-auto">
-      <a class="btn btn-primary" id="current-listing" role="button" href="/mylistings">
-        View my current listings
-      </a>
-    </div>
+   
 
 
     <div class="d-grid  col-md-12 mx-auto">
       {{#each listings as |listing|}}
       <div class="row">
-        <div class="col-md-7">
+        <div class="col-md-12">
           <a class="btn btn-primary no-button" id="single-listing" role="button" href="/listing/{{listing.id}}">
             {{listing.title}}
           </a>
-        </div>
-        <div class="col-5">
+             <div>
           <button class="btn btn-sm btn-danger" id="delete-btn" data-id="{{listing.id}}">
             DELETE
           </button>
         </div>
+
+        </div>
+     
       </div>
       {{/each}}
     </div>
