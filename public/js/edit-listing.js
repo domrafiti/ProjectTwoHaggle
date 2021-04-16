@@ -31,24 +31,6 @@ const editListingFormHandler = async (event) => {
 
 //update needed
 
-//feedback
-
-// const delButtonHandler = async (event) => {
-//   if (event.target.hasAttribute('data-id')) {
-//     const id = event.target.getAttribute('data-id');
-//     //need updated route
-//     const response = await fetch(`/api/projects/${id}`, {
-//       method: 'DELETE',
-//     });
-
-//     if (response.ok) {
-//       document.location.replace('/profile');
-//     } else {
-//       alert('Failed to delete project');
-//     }
-//   }
-// };
-
 const showListingEdit = () => {
   document.querySelector('#listing-div').style.display = 'none';
   document.querySelector('#listing-div-edit').style.display = 'block';
@@ -61,3 +43,6 @@ document
 document
   .querySelector('#listing-edit-show')
   .addEventListener('click', showListingEdit);
+
+
+

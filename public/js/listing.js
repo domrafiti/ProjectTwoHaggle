@@ -51,7 +51,7 @@ const delButtonHandler = async (event) => {
 //   .addEventListener('submit', newFormHandler);
 
 document
-  .querySelector('.haggle-del')
+  .querySelector('#delete-btn')
   .addEventListener('click', delButtonHandler);
 
 //----------------------------UPLOAD CODE STARTS HERE------------//
