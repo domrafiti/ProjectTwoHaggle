@@ -35,6 +35,9 @@ User.init(
         len: [8],
       },
     },
+    picture_path: {
+      type: DataTypes.STRING,
+    },
     num_haggles: {
       type: DataTypes.INTEGER,
       allowNull: true,

@@ -1,20 +1,47 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
-router.post('/', async (req, res) => {
+
+//----------ALL NEW---------//
+const multer = require('multer');
+const uuid = require('uuid').v4;
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    console.log("check");
+    cb(null, './tmp_uploads/');
+  },
+  filename: (req, file, cb) => {
+    const { originalname } = file;
+    cb(null, `${uuid()}-${originalname}`);
+  },
+});
+
+const upload = multer({ storage }); // or simply { dest: 'uploads/' }
+
+router.post('/', upload.array('bruce-wayne'), async (req, res) => {
+  console.log(req.body, req.files);
+
   try {
-    const userData = await User.create(req.body);
+    const userData = await User.create({
+      name: req.body.name,
+      email: req.body.email,
+      password: req.body.password,
+      picture_path: req.files[0].path,
+    });
 
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
 
-      res.status(200).json(userData);
+      //res.status(200).json(userData);
     });
   } catch (err) {
     res.status(400).json(err);
   }
+  res.redirect('/profile');
 });
+//-----------------------ENDS HERE---------------------------------------//
 
 router.post('/login', async (req, res) => {
   try {

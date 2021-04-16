@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Listing extends Model {}
+class Listing extends Model { }
 
 Listing.init(
   {
@@ -43,6 +43,10 @@ Listing.init(
         model: 'status',
         key: 'id',
       },
+    },
+    image_path: {
+      type: DataTypes.STRING,
+
     },
   },
   {
