@@ -12,7 +12,8 @@
         <h5 class="card-title">{{title}}</h5>
         <p class="card-text">{{description}}</p>
         {{!-- <p class="card-text">{{looking_for}}</p> --}}
-        <p class="card-text"><small class="text-muted">Created by {{user.name}} on {{format_date date_created}}</small>
+        <p class="card-text"><small class="text-muted">Created by {{../logged_name}} on {{format_date
+            date_created}}</small>
         </p>
         <!--button is allowing us to redirect user to individual listing-->
         <a class="btn btn-primary" id="listing-view" href="/listing/{{id}}">View

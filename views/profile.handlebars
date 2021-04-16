@@ -88,7 +88,7 @@
   </div>
   <!--REUSE THIS FOR DISPLAYING LISTINGS ON LISTING ROUTE-->
   {{#if listings.length}}
-  <div class="col-md-6 project-list">
+  <div class="col-md-6">
     <!--need to include filtered get to show only users active listings-->
     <div class="d-grid gap-2 col-6 mx-auto">
       <a class="btn btn-primary" id="current-listing" role="button" href="/mylistings">
@@ -97,7 +97,7 @@
     </div>
 
     <div>
-      <div class="d-grid  col-md-12 mx-auto">
+      <div class="d-grid  col-md-12 mx-auto haggle-del">
         {{#each listings as |listing|}}
         <div class="row">
           <div class="col-md-7">
@@ -114,23 +114,7 @@
         </div>
         {{/each}}
       </div>
-
-      {{! <div class="col-md-2"> }}
-        <!--NEED TO INCLUDE LOGIC TO REMOVE DELETE BUTTON IF SESSION USER = POSTING USER-->
-        {{!
-      </div> }}
     </div>
-    {{!-- <div class="row mb-2">
-      <div class="col-md-8">
-        <!--need to have images included-->
-        <h4><a href="/listing/{{listing.id}}">{{listing.title}}</a></h4>
-      </div>
-      <div class="col-md-4">
-        <!--NEED TO INCLUDE LOGIC TO REMOVE DELETE BUTTON IF SESSION USER = POSTING USER-->
-        <button class="btn btn-sm btn-danger" data-id="{{listing.id}}">DELETE</button>
-      </div>
-    </div> --}}
-
   </div>
   {{/if}}
 </div>
