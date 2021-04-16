@@ -48,3 +48,8 @@ body {
 #single-listing {
   float: left !important;
 }
+
+.my-listing-photo {
+  max-height: 180px;
+  max-width: 180px;
+}

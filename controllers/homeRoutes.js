@@ -93,6 +93,7 @@ router.get('/mylistings', async (req, res) => {
             'category_id',
             'status_id',
             'date_created',
+            'image_path',
           ],
         },
         // {
