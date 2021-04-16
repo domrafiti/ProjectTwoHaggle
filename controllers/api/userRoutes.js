@@ -20,7 +20,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage }); // or simply { dest: 'uploads/' }
 
 router.post('/', upload.array('bruce-wayne'), async (req, res) => {
-  console.log(req.body, req.files);
+  //console.log(req.body, req.files);
 
   try {
     const userData = await User.create({
@@ -30,16 +30,21 @@ router.post('/', upload.array('bruce-wayne'), async (req, res) => {
       picture_path: req.files[0].path,
     });
 
+    res.redirect('/profile');
+
     req.session.save(() => {
+      console.log("saving session");
       req.session.user_id = userData.id;
       req.session.logged_in = true;
 
       //res.status(200).json(userData);
     });
+
   } catch (err) {
     res.status(400).json(err);
   }
-  res.redirect('/profile');
+
+
 });
 //-----------------------ENDS HERE---------------------------------------//
 
