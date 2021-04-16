@@ -35,6 +35,7 @@
           <form action="/interested" method="POST">
             <input type="hidden" value="{{user.email}}" name="em_to_email">
             <input type="hidden" value="{{user.name}}" name="em_to_name">
+            <input type="hidden" value="{{logged_user}}" name="em_from_id">
             <input type="hidden" value="{{logged_name}}" name="em_from_name">
             <input type="hidden" value="{{title}}" name="em_title">
             <input type="hidden" value="{{description}}" name="em_desc">

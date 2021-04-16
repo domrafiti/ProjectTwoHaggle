@@ -88,13 +88,14 @@
   </div>
   <!--REUSE THIS FOR DISPLAYING LISTINGS ON LISTING ROUTE-->
   {{#if listings.length}}
-  <div class="col-md-6 project-list">
+  <div class="col-md-6">
     <!--need to include filtered get to show only users active listings-->
     <div class="d-grid gap-2 col-6 mx-auto">
       <a class="btn btn-primary" id="current-listing" role="button" href="/mylistings">
         View my current listings
       </a>
     </div>
+
 
     <div class="d-grid  col-md-12 mx-auto">
       {{#each listings as |listing|}}
@@ -127,6 +128,7 @@
         <button class="btn btn-sm btn-danger" data-id="{{listing.id}}">DELETE</button>
       </div>
     </div> --}}
+
 
   </div>
   {{/if}}

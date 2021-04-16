@@ -79,6 +79,28 @@ router.get('/listing/:id', async (req, res) => {
   }
 });
 
+// Use withAuth middleware to prevent access to route
+router.get('/haggles/:id', withAuth, async (req, res) => {
+  try {
+    const userData = await User.findByPk(req.params.id, {
+      include: [
+        {
+          model: Listing,
+        },
+      ],
+    });
+
+    const user = userData.get({ plain: true });
+
+    res.render('haggles', {
+      ...user,
+      logged_in: true,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 //Logged in users Listing Route
 router.get('/mylistings', async (req, res) => {
   try {
@@ -111,6 +133,7 @@ router.get('/mylistings', async (req, res) => {
     res.render('mylistings', {
       ...user,
       logged_in: req.session.logged_in,
+      logged_name: req.session.logged_name,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -120,6 +143,9 @@ router.get('/mylistings', async (req, res) => {
 router.get('/listings', async (req, res) => {
   try {
     const listingData = await Listing.findAll({
+      where: {
+        status_id: 1,
+      },
       include: [
         {
           model: User,
@@ -171,7 +197,7 @@ router.get('/profile', withAuth, async (req, res) => {
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
-    res.redirect('/profile');
+    res.redirect('back');
     return;
   }
 
@@ -188,7 +214,7 @@ router.post('/interested', async (req, res) => {
     <p><strong>Title</strong>: ${req.body.em_title}<br>
     <strong>Description</strong>: ${req.body.em_desc}<br>
     <strong>Category</strong>: ${req.body.em_cat}</p>
-    <p><a href="http://localhost:3001/">Click Here to see ${req.body.em_from_name}'s Haggles</a></p>
+    <p><a href="http://localhost:3001/haggles/${req.body.em_from_id}">Click Here to see ${req.body.em_from_name}'s Haggles</a></p>
     <p>Happy Hagglin'</p>`,
   };
 
