@@ -239,7 +239,7 @@ router.post('/upload', upload.array('john-wayne'), async (req, res) => {
         user_id: req.session.user_id,
         category_id: req.body.listing_category,
         status_id: req.body.listing_status,
-        image_path: req.files[0].path,
+        image_path: 'uploads/' + req.files[0].filename,
         // image_path_two: req.files[1].path,
         // image_path_three: req.files[2].path,
       });
@@ -257,8 +257,8 @@ router.post('/upload', upload.array('john-wayne'), async (req, res) => {
         user_id: req.session.user_id,
         category_id: req.body.listing_category,
         status_id: req.body.listing_status,
-        image_path: req.files[0].path,
-        image_path_two: req.files[1].path,
+        image_path: 'uploads/' + req.files[0].filename,
+        image_path_two: 'uploads/' + req.files[1].filename,
         // image_path_three: req.files[2].path,
       });
 
@@ -274,9 +274,9 @@ router.post('/upload', upload.array('john-wayne'), async (req, res) => {
         user_id: req.session.user_id,
         category_id: req.body.listing_category,
         status_id: req.body.listing_status,
-        image_path: req.files[0].path,
-        image_path_two: req.files[1].path,
-        image_path_three: req.files[2].path,
+        image_path: 'uploads/' + req.files[0].filename,
+        image_path_two: 'uploads/' + req.files[1].filename,
+        image_path_three: 'uploads/' + req.files[2].filename,
       });
 
       res.redirect('/profile');

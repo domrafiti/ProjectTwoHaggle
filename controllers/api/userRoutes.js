@@ -6,7 +6,7 @@ const uuid = require('uuid').v4;
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    console.log("check");
+    console.log('check');
     cb(null, './public/tmp_uploads/');
   },
   filename: (req, file, cb) => {
@@ -20,18 +20,17 @@ router.post('/', upload.array('bruce-wayne'), async (req, res) => {
   console.log(req.body, req.files);
 
   try {
-    console.log("IM TRYING");
+    console.log('IM TRYING');
     const userData = await User.create({
       name: req.body.name,
       email: req.body.email,
       password: req.body.password,
-      picture_path: req.files[0].path,
+      picture_path: '/tmp_uploads/' + req.files[0].filename,
     });
-    console.log("create Complete");
-
+    console.log('create Complete');
 
     req.session.save(() => {
-      console.log("saving session");
+      console.log('saving session');
       req.session.user_id = userData.id;
       req.session.logged_in = true;
     });
@@ -39,8 +38,6 @@ router.post('/', upload.array('bruce-wayne'), async (req, res) => {
   } catch (err) {
     res.status(400).json(err);
   }
-
-
 });
 
 router.post('/login', async (req, res) => {
