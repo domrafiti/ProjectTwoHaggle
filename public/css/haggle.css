@@ -37,16 +37,22 @@ body {
   font-size: 24px;
   margin-top: 5px;
 }
+
 .welcome,
 h1 {
   float: left;
   right: 30px;
 }
 
+.bio img {
+  border: black solid 1px;
+  width: 250px;
+}
+
 #current-listing {
-  position: relative;
+  
   bottom: 5px;
-  left: 131%;
+  
 }
 
 #single-listing {
@@ -67,3 +73,78 @@ h1 {
   max-height: 180px;
   max-width: 180px;
 }
+
+
+@media only screen and (max-width:768px ) {
+
+#listing-create {
+
+  margin-top: 5px;
+}
+
+}
+
+@media only screen and (max-width:650px ) {
+
+  
+  #listing-create {
+  
+    margin-top: 5px;
+  }
+
+  .bio img{
+      max-width:250px ;
+  }
+
+  #current-listing{
+    font-size: 18px;
+  }
+
+  .list-del{
+
+    right: 15px;
+    margin-top:20px;
+  }
+  
+  }
+
+  @media only screen and (max-width:560px){
+
+    .nav-btn {
+      font-size: 38px !important;
+    }
+  }
+
+  @media only screen and (max-width:450px){
+
+    .bio img{
+      position: relative;
+      right:20px ;
+      margin-top: 10px;
+  }
+
+    .nav-btn {
+      font-size: 36px !important;
+    }
+  }
+
+  @media only screen and (max-width: 430px){
+
+    .nav-btn {
+      font-size: 28px !important;
+    }
+  }
+
+  @media only screen and (max-width: 340px){
+
+    .nav-btn {
+      font-size: 24px !important;
+    }
+
+    .bio img{
+      position: relative;
+      right:20px ;
+      margin-top: 10px;
+  }
+
+  }
