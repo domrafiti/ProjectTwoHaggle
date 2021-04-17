@@ -211,25 +211,105 @@ const upload = multer({ storage });
 
 router.post('/upload', upload.array('john-wayne'), async (req, res) => {
   console.log('posting');
-  console.log(req.body, req.files[0].path);
-  try {
-    const newListing = await Listing.create({
+  console.log(req.body, req.files.length);
 
-      title: req.body.listing_name,
-      description: req.body.listing_desc,
-      user_id: req.session.user_id,
-      category_id: req.body.listing_category,
-      status_id: req.body.listing_status,
-      image_path: req.files[0].path,
-      image_path_two: req.files[1].path,
-      image_path_three: req.files[2].path,
-    });
+  if (req.files.length === 0) {
+    try {
+      const newListing = await Listing.create({
+
+        title: req.body.listing_name,
+        description: req.body.listing_desc,
+        user_id: req.session.user_id,
+        category_id: req.body.listing_category,
+        status_id: req.body.listing_status,
+        // image_path: req.files[0].path,
+        // image_path_two: req.files[1].path,
+        // image_path_three: req.files[2].path,
+      });
+
+      res.redirect('/profile');
+    } catch (err) {
+      res.status(400).json(err);
+    }
+
+  } if (req.files.length === 1) {
+    try {
+      const newListing = await Listing.create({
+
+        title: req.body.listing_name,
+        description: req.body.listing_desc,
+        user_id: req.session.user_id,
+        category_id: req.body.listing_category,
+        status_id: req.body.listing_status,
+        image_path: req.files[0].path,
+        // image_path_two: req.files[1].path,
+        // image_path_three: req.files[2].path,
+      });
+
+      res.redirect('/profile');
+    } catch (err) {
+      res.status(400).json(err);
+    }
+
+  } if (req.files.length === 2) {
+    try {
+      const newListing = await Listing.create({
+
+        title: req.body.listing_name,
+        description: req.body.listing_desc,
+        user_id: req.session.user_id,
+        category_id: req.body.listing_category,
+        status_id: req.body.listing_status,
+        image_path: req.files[0].path,
+        image_path_two: req.files[1].path,
+        // image_path_three: req.files[2].path,
+      });
+
+      res.redirect('/profile');
+    } catch (err) {
+      res.status(400).json(err);
+    }
+
+  } else {
+    try {
+      const newListing = await Listing.create({
+
+        title: req.body.listing_name,
+        description: req.body.listing_desc,
+        user_id: req.session.user_id,
+        category_id: req.body.listing_category,
+        status_id: req.body.listing_status,
+        image_path: req.files[0].path,
+        image_path_two: req.files[1].path,
+        image_path_three: req.files[2].path,
+      });
+
+      res.redirect('/profile');
+    } catch (err) {
+      res.status(400).json(err);
+    }
+  };
 
 
-  } catch (err) {
-    res.status(400).json(err);
-  }
-  res.redirect('/profile');
+
+  // try {
+  //   const newListing = await Listing.create({
+
+  //     title: req.body.listing_name,
+  //     description: req.body.listing_desc,
+  //     user_id: req.session.user_id,
+  //     category_id: req.body.listing_category,
+  //     status_id: req.body.listing_status,
+  //     image_path: req.files[0].path,
+  //     image_path_two: req.files[1].path,
+  //     image_path_three: req.files[2].path,
+  //   });
+
+  //   res.redirect('/ profile');
+  // } catch (err) {
+  //   res.status(400).json(err);
+  // }
+
 });
 
 router.post('/interested', async (req, res) => {
