@@ -181,6 +181,7 @@ router.get('/profile', withAuth, async (req, res) => {
     res.render('profile', {
       ...user,
       logged_in: true,
+      query: req.query,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -1043,7 +1044,7 @@ router.post('/accepted', async (req, res) => {
                                   }?edit=true" target="_blank"
                                     style="box-sizing: border-box;display: inline-block;font-family:'Montserrat',sans-serif;text-decoration: none;-webkit-text-size-adjust: none;text-align: center;color: #FFFFFF; background-color: #eec60e; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; width:auto; max-width:100%; overflow-wrap: break-word; word-break: break-word; word-wrap:break-word; mso-border-alt: none;">
                                     <span style="display:block;padding:10px 70px;line-height:120%;"><strong><span
-                                          style="font-size: 14px; line-height: 16.8px;">UPDATE YOUR HAGGLE TO PENDING OR ACCEPTED/span></strong></span>
+                                          style="font-size: 14px; line-height: 16.8px;">UPDATE YOUR HAGGLE TO PENDING OR ACCEPTED</span></strong></span>
                                   </a>
                                   <!--[if mso]></center></v:roundrect></td></tr></table><![endif]-->
                                 </div>
@@ -1191,7 +1192,7 @@ router.post('/accepted', async (req, res) => {
 
   try {
     await sgMail.send(msg);
-    res.redirect('/profile');
+    res.redirect('/profile?accepted=sent');
     return;
   } catch (error) {
     console.error(error);
