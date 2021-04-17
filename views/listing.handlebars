@@ -1,8 +1,36 @@
-<div class="card mb-3 mx-auto" style="max-width: 540px;" id="listing-div">
+{{#if (if_eq query 'true')}}
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Congrats on the Haggle!</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Update your listing to Pending, or Accepted</p>
+        <p>
+          Instructions for completing the Haggle will be sent to you and
+          your fellow Haggler.</p>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $(window).on('load', function () {
+    $('#exampleModal').modal('show');
+  });
+</script>
+{{else}}
+{{/if}}
+
+<div class="card mb-3 mx-auto " style="max-width: 540px;{{#if (if_eq query 'true')}}display:none;{{/if}}"
+  id="listing-div">
   <div class="row g-0">
     <div class="col-md-4">
       <!--how do we store and upload images?-->
-      <img src="{{image_path}}" alt="Hello!" class="my-listing-photo">
+      <img src="../{{image_path}}" alt="{{title}}" class="my-listing-photo">
     </div>
     <div class="col-md-8">
       <div class="card-body">
@@ -63,7 +91,8 @@
     </div>
   </div>
 </div>
-<div class="card mb-3 mx-auto" style="max-width: 540px;" id="listing-div-edit">
+<div class="card mb-3 mx-auto" style="max-width: 540px;{{#if (if_eq query 'true')}}display:block;{{/if}}"
+  id="listing-div-edit">
   <h3 class="mx-1">Edit Listing:</h3>
   <form class="form edit-listing-form mx-auto">
     <div class="form-group">

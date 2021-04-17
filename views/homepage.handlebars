@@ -1,5 +1,5 @@
-{{#if (if_neq query.interest 'sent')}}
-{{else}}
+{{#if (if_eq query.interest 'sent')}}
+
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -20,8 +20,8 @@
     $('#exampleModal').modal('show');
   });
 </script>
+{{else}}
 {{/if}}
-
 
 <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">

@@ -11,7 +11,7 @@
   <div class="row g-0">
     <div class="col-md-4">
       <!--need image here -->
-      <img src="{{image_path}}" alt="{{title}}" class="my-listing-photo">
+      <img src="../{{image_path}}" alt="{{title}}" class="my-listing-photo">
     </div>
     <div class="col-md-8">
       <div class="card-body">
@@ -24,8 +24,8 @@
         <!--button is allowing us to redirect user to individual listing-->
         {{#if (if_eq status_id 1)}}
         <form action="/accepted" method="POST">
-          <input type="hidden" id="listing_1" value="{{../query}}">
-          <input type="hidden" id="listing_2" value="{{id}}">
+          <input type="hidden" name="listing_1" value="{{../query}}">
+          <input type="hidden" name="listing_2" value="{{id}}">
           <input type="hidden" value="{{../email}}" name="em_to_email">
           <input type="hidden" value="{{../name}}" name="em_to_name">
           <input type="hidden" value="{{../logged_user}}" name="em_from_id">
