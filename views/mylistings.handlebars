@@ -1,3 +1,4 @@
+{{#if listings.length}}
 {{#each listings as |listing| }}
 <div class="card mb-3 mx-auto" style="max-width: 540px;">
   <div class="row g-0">
@@ -21,7 +22,17 @@
   </div>
 </div>
 {{/each}}
-
+{{else}}
+<div class="row">
+  <div>
+    <h1>You have no listings.</h1>
+  </div>
+  <!--button is allowing us to redirect user to individual listing-->
+  <div>
+    <a class="btn btn-primary" href="/profile">GET HAGGLIN'</a>
+  </div>
+</div>
+{{/if}}
 {{!-- 3. Listings/Browsing - login status doesnt matter
 A. Continuous Scroll/Pages
 B. Present Listings

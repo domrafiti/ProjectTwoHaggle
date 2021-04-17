@@ -3,42 +3,42 @@
     "name": "Dom",
     "email": "dom.rafiti@gmail.com",
     "password": "password12345",
-    "picture_path": "public\\tmp_uploads\\f66a3bc8-0b42-49a2-9671-31045a707531-man 5.jpg"
+    "picture_path": "\/tmp_uploads/f66a3bc8-0b42-49a2-9671-31045a707531-man 5.jpg"
   },
   {
     "name": "Keith",
     "email": "keithblack4290@gmail.com",
     "password": "password12345",
-    "picture_path": "public\\tmp_uploads\\5909a4b0-a235-4e98-b997-e2a6c51effc4-man 4.jpg"
+    "picture_path": "\/tmp_uploads/5909a4b0-a235-4e98-b997-e2a6c51effc4-man 4.jpg"
   },
   {
     "name": "Gio",
     "email": "Giochavez320@gmail.com",
     "password": "password12345",
-    "picture_path": "public\\tmp_uploads\\e603f02e-22cf-4b10-b431-f75ed91730b5-man 3.jpg"
+    "picture_path": "\/tmp_uploads/e603f02e-22cf-4b10-b431-f75ed91730b5-man 3.jpg"
   },
   {
     "name": "Brice",
     "email": "brice.huisken@gmail.com",
     "password": "password12345",
-    "picture_path": "public\\tmp_uploads\\bbcd4d26-b82b-492c-b284-aed8acb65c61-man paint.jpg"
+    "picture_path": "\/tmp_uploads/bbcd4d26-b82b-492c-b284-aed8acb65c61-man paint.jpg"
   },
   {
     "name": "Sal",
     "email": "sal@hotmail.com",
     "password": "password12345",
-    "picture_path": "public\\tmp_uploads\\3df4bfb4-2d5c-4f0d-8151-ddd4eb45bce2-man.jpg"
+    "picture_path": "\/tmp_uploads/3df4bfb4-2d5c-4f0d-8151-ddd4eb45bce2-man.jpg"
   },
   {
     "name": "Amiko",
     "email": "amiko2k20@aol.com",
     "password": "password12345",
-    "picture_path": "public\\tmp_uploads\\2f4025f4-eba3-4b87-8d14-0c9c5ccebdb6-woman.jpg"
+    "picture_path": "\/tmp_uploads/2f4025f4-eba3-4b87-8d14-0c9c5ccebdb6-woman.jpg"
   },
   {
     "name": "Lernantino",
     "email": "lernantino@gmail.com",
     "password": "password12345",
-    "picture_path": "public\\tmp_uploads\\ede5ccea-ae24-44b4-be88-209f50447e76-woman 2.jpg"
+    "picture_path": "\/tmp_uploads/ede5ccea-ae24-44b4-be88-209f50447e76-woman 2.jpg"
   }
 ]
