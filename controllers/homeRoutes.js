@@ -377,7 +377,7 @@ router.post('/interested', async (req, res) => {
               <div class="u-row"
                 style="Margin: 0 auto;min-width: 320px;max-width: 550px;overflow-wrap: break-word;word-wrap: break-word;word-break:">
                 <div
-                  style="border-collapse: collapse;display: table;width: 100%;background-image: url('https://lh4.googleusercontent.com/re3G3R4NIXBhmy-Ak4IIMlcHQVVO_PWET_ApAzTwUry1jLCPmg_GmLyrySsrkU73Pidt6nFn-AA_a13cPLTF');background-repeat: repeat;background-position: center top;background-color: transparent;">
+                  style="border-collapse: collapse;display: table;width: 100%;background-image: url('https://raw.githubusercontent.com/domrafiti/ProjectTwoHaggle/main/public/img/email_woodbackground.png');background-repeat: repeat;background-position: center top;background-color: transparent;">
                   <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding: 0px;background-color: transparent;" align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:550px;"><tr style="background-image: url('images/image-1.png');background-repeat: repeat;background-position: center top;background-color: #fc5656;"><![endif]-->
   
                   <!--[if (mso)|(IE)]><td align="center" width="534" style="width: 534px;padding: 0px;border-top: 8px solid #000000;border-left: 8px solid #000000;border-right: 8px solid #000000;border-bottom: 0px solid transparent;" valign="top"><![endif]-->
@@ -401,7 +401,7 @@ router.post('/interested', async (req, res) => {
                                   <tr>
                                     <td class="v-text-align" style="padding-right: 0px;padding-left: 0px;" align="center">
   
-                                      <img align="center" border="0" src="https://lh6.googleusercontent.com/52sPVT7PV6aIl0mwPTzOaoYExYVCcGbVy7R_9-d524tz-o8EMHMsAdWcyG6UoLN-fp8hvtsRkCbkWUvsUQbb" alt="Image" title="Image"
+                                      <img align="center" border="0" src="https://raw.githubusercontent.com/domrafiti/ProjectTwoHaggle/main/public/img/email_logo.png" alt="Image" title="Image"
                                         style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: inline-block !important;border: none;height: auto;float: none;width: 25%;max-width: 132.5px;"
                                         width="132.5" />
   
@@ -428,7 +428,7 @@ router.post('/interested', async (req, res) => {
                                     <tr style="vertical-align: top">
                                       <td
                                         style="word-break: break-word;border-collapse: collapse !important;vertical-align: top;font-size: 0px;line-height: 0px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%">
-                                        <span>&#160;</span>
+                                        <span>&nbsp;</span>
                                       </td>
                                     </tr>
                                   </tbody>
@@ -545,7 +545,7 @@ router.post('/interested', async (req, res) => {
                                     <tr style="vertical-align: top">
                                       <td
                                         style="word-break: break-word;border-collapse: collapse !important;vertical-align: top;font-size: 0px;line-height: 0px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%">
-                                        <span>&#160;</span>
+                                        <span>&nbsp;</span>
                                       </td>
                                     </tr>
                                   </tbody>
