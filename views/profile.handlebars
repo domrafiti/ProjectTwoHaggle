@@ -1,3 +1,27 @@
+{{#if (if_neq query.accepted 'sent')}}
+{{else}}
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Congrats on Hagglin'</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Your message has been sent.</p>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $(window).on('load', function () {
+    $('#exampleModal').modal('show');
+  });
+</script>
+{{/if}}
+
 <div class="row" style="padding: 25px; background-color:#708090; margin:-20px; border-bottom: solid black 1px">
 
   <div class="col-12">
@@ -97,20 +121,6 @@
       {{/each}}
     </div>
 
-    {{! <div class="col-md-2"> }}
-      <!--NEED TO INCLUDE LOGIC TO REMOVE DELETE BUTTON IF SESSION USER = POSTING USER-->
-      {{!
-    </div> }}
-    {{!-- <div class="row mb-2">
-      <div class="col-md-8">
-        <!--need to have images included-->
-        <h4><a href="/listing/{{listing.id}}">{{listing.title}}</a></h4>
-      </div>
-      <div class="col-md-4">
-        <!--NEED TO INCLUDE LOGIC TO REMOVE DELETE BUTTON IF SESSION USER = POSTING USER-->
-        <button class="btn btn-sm btn-danger" data-id="{{listing.id}}">DELETE</button>
-      </div>
-    </div> --}}
 
 
   </div>
