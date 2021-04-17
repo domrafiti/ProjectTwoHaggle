@@ -1,4 +1,4 @@
-# Project Two Haggle
+# ![Haggle](https://raw.githubusercontent.com/domrafiti/ProjectTwoHaggle/main/public/img/email_logo.png)
 
 ## Description
 
@@ -8,11 +8,32 @@ With COVID-19 and the financial burden brought upon many, this application is in
 
 Main challenges faced when creating this application were uploading images into the database, sending automated emails for interested users, and the overall time constraint of the project. For future improvements, we would like to create an in application messaging system, rating system for each user based on their haggle transactions, and a mobile application.
 
+## Table of Contents
+
+- [Installation](#Installation)
+- [Usage](#usage)
+- [Technolgies Utilized](#Technologies-Utilized)
+- [Deployed Apllication](#Deployed-Application-Link)
+- [Credits](#credits)
+- [Contributors](#Contributors)
+- [License](#license)
+
 ## Installation
 
 To install this repository for use, you will need to download all files in the [Project Two Haggle](https://github.com/domrafiti/ProjectTwoHaggle) repository. You will then need to run the schema.sql file within the db folder in MySQL to set the database. 
 
-Open your terminal and initialize your node models by running "npm i". Once this is done, then run "npm run seed" to populate your database with information. Last, run "npm run start" to initialize your local server.
+Open your terminal and initialize your node models by running:
+```bash
+npm i
+```
+Once this is done, then run the following to populate your database with information. 
+```bash
+npm run seed
+```
+Last, run the following to initialize your local server:
+```bash
+npm run start
+```
 
 Please note, you will need to updated the .env file with your MySQL credentials to run this application on your computer.
 
@@ -27,7 +48,51 @@ From the profile page you can re-visit the "View All Listings" link in the navba
 When expressing interest in a listing, an email will be sent to the poster of the listing stating your interest. They will be able to acccept or decline your interest. If they accept, the haggle proccess will begin and end if both parties come to a completed agreement.
 
 
-Please reference a flow diagram of the application: [Flow Diagram](https://files.slack.com/files-pri/T01FRNBBG8H-F01V01GN8SV/workflow_diagram.jpeg)
+Please reference a flow diagram of the application: 
+![Flow Diagram](https://raw.githubusercontent.com/domrafiti/ProjectTwoHaggle/main/Workflow-Diagram.jpeg)
+
+## Technologies-Utilized
+
+- [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+- [Node,js](https://nodejs.org/en/)
+- [express-handlebars](https://www.npmjs.com/package/express-handlebars) 
+- [MySQL2](https://www.npmjs.com/package/mysql2)
+- [Sequelize](https://www.npmjs.com/package/sequelize)
+- [dotenv package](https://www.npmjs.com/package/dotenv)
+- [bcrypt package](https://www.npmjs.com/package/bcrypt) 
+- [express-session](https://www.npmjs.com/package/express-session)
+- [connect-session-sequelize](https://www.npmjs.com/package/connect-session-sequelize)
+- [@sendgrid/mail](https://www.npmjs.com/package/@sendgrid/mail)
+- [multer](https://www.npmjs.com/package/multer)
+- [Bootstrap](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
+- [jQuery](https://code.jquery.com/)
+- [Font Awesome](https://fontawesome.com/)
+
+## Deployed-Application-Link
+
+- [Deployed Link](https://haggle-proj.herokuapp.com/)
+
+# Screenshots of the application:
+
+* Mobile:
+
+![Mobile](https://raw.githubusercontent.com/domrafiti/ProjectTwoHaggle/main/haggle_mobile.png)
+
+* Desktop:
+
+![Desktop](https://raw.githubusercontent.com/domrafiti/ProjectTwoHaggle/main/haggle_desktop.png)
+
+## Contributors
+
+<img src="https://contrib.rocks/image?repo=domrafiti/ProjectTwoHaggle" />
+
+* [domrafiti](https://github.com/domrafiti)
+
+* [glchavez](https://github.com/glchavez)
+
+* [bahuisken](https://github.com/bahuisken)
+
+* [Kblack4290](https://github.com/Kblack4290)
 
 ## Credits
 
@@ -35,7 +100,8 @@ I would like to provide credit to [The Denver Univeristy Coding Bootcamp](https:
 
 ## License
 
-MIT License
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Copyright &copy; 2021 Giovany Chavez, Brice Huisken, Dominick Rafiti, Keith Black
 

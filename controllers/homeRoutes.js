@@ -67,6 +67,7 @@ router.get('/listing/:id', async (req, res) => {
       logged_in: req.session.logged_in,
       logged_user: req.session.user_id,
       logged_name: req.session.logged_name,
+      query: req.query.edit,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -79,6 +80,15 @@ router.get('/haggles/:id', withAuth, async (req, res) => {
       include: [
         {
           model: Listing,
+          attributes: [
+            'id',
+            'title',
+            'description',
+            'category_id',
+            'status_id',
+            'date_created',
+            'image_path',
+          ],
         },
       ],
     });
@@ -1030,7 +1040,7 @@ router.post('/accepted', async (req, res) => {
                                   <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-spacing: 0; border-collapse: collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;font-family:'Montserrat',sans-serif;"><tr><td class="v-text-align" style="font-family:'Montserrat',sans-serif;" align="center"><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="" style="height:36px; v-text-anchor:middle; width:260px;" arcsize="11%" stroke="f" fillcolor="#eec60e"><w:anchorlock/><center style="color:#FFFFFF;font-family:'Montserrat',sans-serif;"><![endif]-->
                                   <a href="https://haggle-proj.herokuapp.com/listing/${
                                     req.body.listing_2
-                                  }" target="_blank"
+                                  }?edit=true" target="_blank"
                                     style="box-sizing: border-box;display: inline-block;font-family:'Montserrat',sans-serif;text-decoration: none;-webkit-text-size-adjust: none;text-align: center;color: #FFFFFF; background-color: #eec60e; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; width:auto; max-width:100%; overflow-wrap: break-word; word-break: break-word; word-wrap:break-word; mso-border-alt: none;">
                                     <span style="display:block;padding:10px 70px;line-height:120%;"><strong><span
                                           style="font-size: 14px; line-height: 16.8px;">UPDATE YOUR HAGGLE TO PENDING OR ACCEPTED/span></strong></span>

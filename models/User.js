@@ -38,10 +38,6 @@ User.init(
     picture_path: {
       type: DataTypes.STRING,
     },
-    num_haggles: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-    },
     total_rating: {
       type: DataTypes.INTEGER,
       allowNull: true,
@@ -58,7 +54,10 @@ User.init(
         return newUserData;
       },
       beforeUpdate: async (updatedUserData) => {
-        updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
+        updatedUserData.password = await bcrypt.hash(
+          updatedUserData.password,
+          10
+        );
         return updatedUserData;
       },
     },
