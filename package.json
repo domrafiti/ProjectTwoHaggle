@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@sendgrid/mail": "^7.4.2",
     "bcrypt": "^5.0.0",
     "connect-session-sequelize": "^7.0.4",
     "dotenv": "^8.2.0",
@@ -25,8 +26,7 @@
     "mysql2": "^2.2.5",
     "nodemon": "^2.0.7",
     "req-flash": "0.0.3",
-    "sequelize": "^6.3.5",
-    "@sendgrid/mail": "^7.4.2"
+    "sequelize": "^6.3.5"
   },
   "devDependencies": {
     "eslint": "^7.12.1",
