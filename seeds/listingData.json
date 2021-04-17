@@ -5,7 +5,7 @@
     "user_id": 3,
     "status_id": 1,
     "category_id": 6,
-    "image_path": "\/uploads\/1f0be074-82a7-4950-82de-5f27ed7089ae-haircut.jpg"
+    "image_path": "uploads\/1f0be074-82a7-4950-82de-5f27ed7089ae-haircut.jpg"
   },
   {
     "title": "Riding Mower",
@@ -13,7 +13,7 @@
     "user_id": 4,
     "status_id": 1,
     "category_id": 3,
-    "image_path": "\/uploads\/136065de-eb4b-4534-9323-79373a290595-mower.jpg"
+    "image_path": "uploads\/136065de-eb4b-4534-9323-79373a290595-mower.jpg"
   },
   {
     "title": "Overalls",
@@ -21,7 +21,7 @@
     "user_id": 5,
     "status_id": 1,
     "category_id": 2,
-    "image_path": "\/uploads\/07335139-ddda-4370-9bb0-a6d687890ecf-overalls.jpg"
+    "image_path": "uploads\/07335139-ddda-4370-9bb0-a6d687890ecf-overalls.jpg"
   },
   {
     "title": "Banjo Lessons",
@@ -29,7 +29,7 @@
     "user_id": 3,
     "status_id": 1,
     "category_id": 6,
-    "image_path": "\/uploads\/54c644f9-2dc5-45ab-a6f4-5a0b226c48eb-banjo.jpg"
+    "image_path": "uploads\/54c644f9-2dc5-45ab-a6f4-5a0b226c48eb-banjo.jpg"
   },
   {
     "title": "Hat Collection",
@@ -37,7 +37,7 @@
     "user_id": 2,
     "status_id": 1,
     "category_id": 2,
-    "image_path": "\/uploads\/564afa4e-5313-4d3a-bff7-2e92a0881567-hats.jpg"
+    "image_path": "uploads\/564afa4e-5313-4d3a-bff7-2e92a0881567-hats.jpg"
   },
   {
     "title": "House Cleaning",
@@ -45,7 +45,7 @@
     "user_id": 7,
     "status_id": 1,
     "category_id": 7,
-    "image_path": "\/uploads\/587c4642-cfd4-4ac3-b866-261c0c5e95a0-cleaning.jpg"
+    "image_path": "uploads\/587c4642-cfd4-4ac3-b866-261c0c5e95a0-cleaning.jpg"
   },
   {
     "title": "Leather Couch",
@@ -53,7 +53,7 @@
     "user_id": 6,
     "status_id": 1,
     "category_id": 4,
-    "image_path": "\/uploads\/9dbb64c0-3280-40a9-a4c5-a05c00f8944c-couch.jpg"
+    "image_path": "uploads\/9dbb64c0-3280-40a9-a4c5-a05c00f8944c-couch.jpg"
   },
   {
     "title": "Artwork and Paintings",
@@ -61,6 +61,6 @@
     "user_id": 6,
     "status_id": 1,
     "category_id": 5,
-    "image_path": "\/uploads\/132e7b28-594d-43a0-a896-eb26a9779fcf-art.jpg"
+    "image_path": "uploads\/132e7b28-594d-43a0-a896-eb26a9779fcf-art.jpg"
   }
 ]
