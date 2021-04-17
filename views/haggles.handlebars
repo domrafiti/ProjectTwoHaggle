@@ -1,13 +1,17 @@
 <!--FILTERING NEEDED-->
+
 {{#if listings.length}}
-<h1>{{name}}'s Haggles:</h1>
+<div class="card mb-3 mx-auto" style="max-width: 540px;">
+
+  <h1 class="ml-3">{{name}}'s Haggles:</h1>
+</div>
 {{#each listings as |listing| }}
 
-<div class="card mb-3" style="max-width: 540px;">
+<div class="card mb-3 mx-auto" style="max-width: 540px;">
   <div class="row g-0">
     <div class="col-md-4">
       <!--need image here -->
-      <img src="..." alt="...">
+      <img src="{{image_path}}" alt="{{title}}" class="my-listing-photo">
     </div>
     <div class="col-md-8">
       <div class="card-body">
@@ -18,7 +22,25 @@
             date_created}}</small>
         </p>
         <!--button is allowing us to redirect user to individual listing-->
-        <button class="btn btn-primary" haggle-id="{{id}}">Accept</button>
+        {{#if (if_eq status_id 1)}}
+        <form action="/accepted" method="POST">
+          <input type="hidden" id="listing_1" value="{{../query}}">
+          <input type="hidden" id="listing_2" value="{{id}}">
+          <input type="hidden" value="{{../email}}" name="em_to_email">
+          <input type="hidden" value="{{../name}}" name="em_to_name">
+          <input type="hidden" value="{{../logged_user}}" name="em_from_id">
+          <input type="hidden" value="{{../logged_name}}" name="em_from_name">
+          <input type="hidden" value="{{title}}" name="em_title">
+          <input type="hidden" value="{{description}}" name="em_desc">
+          <button class="btn btn-primary" type="submit" haggle-id="{{id}}">Accept</button>
+        </form>
+        {{else}}{{/if}}
+        {{#if (if_eq status_id 2)}}
+        <button class="btn btn-primary" disabled>Pending</button>
+        {{else}}{{/if}}
+        {{#if (if_eq status_id 3)}}
+        <button class="btn btn-primary" disabled>Accepted</button>
+        {{else}}{{/if}}
 
       </div>
     </div>
@@ -28,18 +50,3 @@
 {{else}}
 <h1>{{name}} has no Haggles.</h1>
 {{/if}}
-{{!-- 3. Listings/Browsing - login status doesnt matter
-A. Continuous Scroll/Pages
-B. Present Listings
-a. using cards of sorts to display (routes to listing)
-i. Item/Service Title
-ii. Short descriptoin
-iii. looking for
-iv. picture (use position 0 and let poster know first image is listing image)
-C. Filters?
-a. categories
-b. services OR items
-c. one user
-D. Sort
-E. Top Traders - activity within last 30 days or based off rating
-F. New/Most Recently posted --}}

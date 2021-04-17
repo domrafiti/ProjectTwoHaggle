@@ -1,23 +1,8 @@
-{{!-- <div class="text-center">
-  <h2>{{name}}</h2>
-  <p>{{{get_emoji}}}</p>
-  <p>{{description}}</p>
-  <p>{{looking_for}}</p>
-  <p>Created by: {{user.name}} on {{format_date date_created}}</p>
-  <p>
-    <button class="btn btn-primary">I am Interested!</button>
-  </p>
-</div> --}}
-
-
-<!--Need to look into allowing post owner to unlock and edit this page-->
-
-{{!-- {{#if user.name}} --}}
 <div class="card mb-3 mx-auto" style="max-width: 540px;" id="listing-div">
   <div class="row g-0">
     <div class="col-md-4">
       <!--how do we store and upload images?-->
-      <img src="http://localhost:3001/{{image_path}}" alt="..." class="my-listing-photo">
+      <img src="{{image_path}}" alt="Hello!" class="my-listing-photo">
     </div>
     <div class="col-md-8">
       <div class="card-body">
@@ -40,9 +25,16 @@
             <input type="hidden" value="{{title}}" name="em_title">
             <input type="hidden" value="{{description}}" name="em_desc">
             <input type="hidden" value="{{category.name}}" name="em_cat">
-
+            <input type="hidden" value="{{id}}" name="em_listing_id">
+            {{#if (if_eq status_id 1)}}
             <button id="listing-interested-btn" type="submit" class="btn btn-primary">I am Interested!</button>
-
+            {{else}}{{/if}}
+            {{#if (if_eq status_id 2)}}
+            <button class="btn btn-primary" disabled>Pending</button>
+            {{else}}{{/if}}
+            {{#if (if_eq status_id 3)}}
+            <button class="btn btn-primary" disabled>Accepted</button>
+            {{else}}{{/if}}
           </form>
         </div>
         <div class="form-group mx-1 hide-it">
@@ -51,9 +43,12 @@
         {{else}}
 
         <div class="form-group mx-1  hide-it">
+
           <form action="/interested" method="POST">
             <button id="listing-interested-btn" type="submit" class="btn btn-primary">I am Interested!</button>
           </form>
+
+
         </div>
 
         <div class="form-group mx-1 show-it">
@@ -128,15 +123,5 @@
     </div>
   </form>
 </div>
-{{!-- 4. Listing/One -- MVP Ready
-A. include listing information (photos, details, looking for, description, etc.)
-B. Check login status:
-YES
-a. i'm interested - contact to trade
-i. workflow
-NO
-a. Prompt to login - redirect
-C. OWNER:
-a. unlock page to edit --}}
 
 <script src="/js/edit-listing.js"></script>
