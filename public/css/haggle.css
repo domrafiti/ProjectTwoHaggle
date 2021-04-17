@@ -17,7 +17,8 @@ header {
 }
 
 body {
-  background: url('../img/woodbackground.png');
+  background-image: url('/img/woodbackground.png');
+  background-size: 100% 100%;
 }
 
 .container {
@@ -30,26 +31,22 @@ body {
   border-color: aliceblue;
   background-color: #d2691e;
   font-size: 24px;
-  
 }
 
 #delete-btn {
   font-size: 24px;
   margin-top: 5px;
-
-
 }
-.welcome, h1{
+.welcome,
+h1 {
   float: left;
   right: 30px;
 }
 
 #current-listing {
-   position: relative;
+  position: relative;
   bottom: 5px;
   left: 131%;
-  
-  
 }
 
 #single-listing {
