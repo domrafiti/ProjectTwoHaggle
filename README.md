@@ -54,7 +54,7 @@ Please reference a flow diagram of the application:
 ## Technologies-Utilized
 
 - [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-- [Node,js](https://nodejs.org/en/)
+- [Node.js](https://nodejs.org/en/)
 - [express-handlebars](https://www.npmjs.com/package/express-handlebars) 
 - [MySQL2](https://www.npmjs.com/package/mysql2)
 - [Sequelize](https://www.npmjs.com/package/sequelize)
